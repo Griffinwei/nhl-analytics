@@ -364,4 +364,5 @@ def ingest_play_by_play(season: int):
 
 
 if __name__ == "__main__":
-    ingest_play_by_play(20252026)
+    season = int(os.getenv('SEASON', '20252026'))
+    ingest_play_by_play(season)
