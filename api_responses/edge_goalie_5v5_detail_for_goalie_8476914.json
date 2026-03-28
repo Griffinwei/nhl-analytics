@@ -1,0 +1,395 @@
+{
+  "savePctg5v5Last10": [
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-buf/2026/03/25/2025021135",
+      "savePctg": 0.9444,
+      "gameDate": "2026-03-25",
+      "decision": "W",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Sabres"
+        },
+        "placeNameWithPreposition": {
+          "default": "Buffalo",
+          "fr": "de Buffalo"
+        },
+        "abbrev": "BUF",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BUF_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg"
+        },
+        "slug": "buffalo-sabres-7"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-njd/2026/03/16/2025021064",
+      "savePctg": 0.8929,
+      "gameDate": "2026-03-16",
+      "decision": "O",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Devils"
+        },
+        "placeNameWithPreposition": {
+          "default": "New Jersey",
+          "fr": "du New Jersey"
+        },
+        "abbrev": "NJD",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/NJD_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg"
+        },
+        "slug": "new-jersey-devils-1"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-pit/2026/03/08/2025021002",
+      "savePctg": 0.9118,
+      "gameDate": "2026-03-08",
+      "decision": "O",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Penguins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Pittsburgh",
+          "fr": "de Pittsburgh"
+        },
+        "abbrev": "PIT",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/PIT_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg"
+        },
+        "slug": "pittsburgh-penguins-5"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-nsh/2026/03/05/2025020979",
+      "savePctg": 0.8125,
+      "gameDate": "2026-03-05",
+      "decision": "L",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Predators"
+        },
+        "placeNameWithPreposition": {
+          "default": "Nashville",
+          "fr": "de Nashville"
+        },
+        "abbrev": "NSH",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/NSH_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg"
+        },
+        "slug": "nashville-predators-18"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/cbj-vs-bos/2026/02/26/2025020918",
+      "savePctg": 0.9394,
+      "gameDate": "2026-02-26",
+      "decision": "W",
+      "playerOnHomeTeam": true,
+      "homeTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Blue Jackets"
+        },
+        "placeNameWithPreposition": {
+          "default": "Columbus",
+          "fr": "de Columbus"
+        },
+        "abbrev": "CBJ",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/CBJ_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg"
+        },
+        "slug": "columbus-blue-jackets-29"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-fla/2026/02/04/2025020893",
+      "savePctg": 0.9231,
+      "gameDate": "2026-02-04",
+      "decision": "O",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Panthers"
+        },
+        "placeNameWithPreposition": {
+          "default": "Florida",
+          "fr": "de la Floride"
+        },
+        "abbrev": "FLA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/FLA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/FLA_dark.svg"
+        },
+        "slug": "florida-panthers-13"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-nyr/2026/01/26/2025020826",
+      "savePctg": 0.8421,
+      "gameDate": "2026-01-26",
+      "decision": "O",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Rangers"
+        },
+        "placeNameWithPreposition": {
+          "default": "New York",
+          "fr": "de New York"
+        },
+        "abbrev": "NYR",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/NYR_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/NYR_dark.svg"
+        },
+        "slug": "new-york-rangers-3"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/vgk-vs-bos/2026/01/22/2025020794",
+      "savePctg": 0.9412,
+      "gameDate": "2026-01-22",
+      "decision": "W",
+      "playerOnHomeTeam": true,
+      "homeTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Golden Knights"
+        },
+        "placeNameWithPreposition": {
+          "default": "Vegas",
+          "fr": "de Vegas"
+        },
+        "abbrev": "VGK",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/VGK_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/VGK_dark.svg"
+        },
+        "slug": "vegas-golden-knights-54"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-dal/2026/01/20/2025020783",
+      "savePctg": 1.0,
+      "gameDate": "2026-01-20",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Stars"
+        },
+        "placeNameWithPreposition": {
+          "default": "Dallas",
+          "fr": "de Dallas"
+        },
+        "abbrev": "DAL",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/DAL_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/DAL_dark.svg"
+        },
+        "slug": "dallas-stars-25"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-chi/2026/01/17/2025020763",
+      "savePctg": 0.875,
+      "gameDate": "2026-01-17",
+      "decision": "W",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Blackhawks"
+        },
+        "placeNameWithPreposition": {
+          "default": "Chicago",
+          "fr": "de Chicago"
+        },
+        "abbrev": "CHI",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/CHI_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/CHI_dark.svg?season=20252026"
+        },
+        "slug": "chicago-blackhawks-16"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    }
+  ],
+  "savePctg5v5Details": {
+    "savePctg": {
+      "value": 0.8986,
+      "leagueAvg": 0.906036,
+      "percentile": 0.2759
+    },
+    "savePctgClose": {
+      "value": 0.8696,
+      "leagueAvg": 0.910367,
+      "percentile": 0.0172
+    },
+    "shots": {
+      "value": 572,
+      "leagueAvg": 520,
+      "percentile": 0.2586
+    },
+    "shotsPer60": {
+      "value": 28.6199,
+      "leagueAvg": 26.568,
+      "percentile": 0.8966
+    }
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "savePctg5v5Last10": [
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-fla/2026/03/24/2025021123",
+      "savePctg": 0.8421,
+      "gameDate": "2026-03-24",
+      "decision": "O",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Panthers"
+        },
+        "placeNameWithPreposition": {
+          "default": "Florida",
+          "fr": "de la Floride"
+        },
+        "abbrev": "FLA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/FLA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/FLA_dark.svg"
+        },
+        "slug": "florida-panthers-13"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-cbj/2026/03/21/2025021104",
+      "savePctg": 0.8261,
+      "gameDate": "2026-03-21",
+      "decision": "L",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Blue Jackets"
+        },
+        "placeNameWithPreposition": {
+          "default": "Columbus",
+          "fr": "de Columbus"
+        },
+        "abbrev": "CBJ",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/CBJ_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg"
+        },
+        "slug": "columbus-blue-jackets-29"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-nsh/2026/03/19/2025021087",
+      "savePctg": 0.9565,
+      "gameDate": "2026-03-19",
+      "decision": "L",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Predators"
+        },
+        "placeNameWithPreposition": {
+          "default": "Nashville",
+          "fr": "de Nashville"
+        },
+        "abbrev": "NSH",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/NSH_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg"
+        },
+        "slug": "nashville-predators-18"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/fla-vs-sea/2026/03/15/2025021062",
+      "savePctg": 0.8889,
+      "gameDate": "2026-03-15",
+      "decision": "W",
+      "playerOnHomeTeam": true,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Panthers"
+        },
+        "placeNameWithPreposition": {
+          "default": "Florida",
+          "fr": "de la Floride"
+        },
+        "abbrev": "FLA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/FLA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/FLA_dark.svg"
+        },
+        "slug": "florida-panthers-13"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/col-vs-sea/2026/03/12/2025021040",
+      "savePctg": 0.8182,
+      "gameDate": "2026-03-12",
+      "decision": "L",
+      "playerOnHomeTeam": true,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Avalanche"
+        },
+        "placeNameWithPreposition": {
+          "default": "Colorado",
+          "fr": "du Colorado"
+        },
+        "abbrev": "COL",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/COL_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/COL_dark.svg"
+        },
+        "slug": "colorado-avalanche-21"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/nsh-vs-sea/2026/03/10/2025021024",
+      "savePctg": 0.875,
+      "gameDate": "2026-03-10",
+      "decision": "L",
+      "playerOnHomeTeam": true,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Predators"
+        },
+        "placeNameWithPreposition": {
+          "default": "Nashville",
+          "fr": "de Nashville"
+        },
+        "abbrev": "NSH",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/NSH_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg"
+        },
+        "slug": "nashville-predators-18"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/ott-vs-sea/2026/03/07/2025021000",
+      "savePctg": 0.7667,
+      "gameDate": "2026-03-07",
+      "decision": "L",
+      "playerOnHomeTeam": true,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Senators",
+          "fr": "S\u00e9nateurs"
+        },
+        "placeNameWithPreposition": {
+          "default": "Ottawa",
+          "fr": "d'Ottawa"
+        },
+        "abbrev": "OTT",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/OTT_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg"
+        },
+        "slug": "ottawa-senators-9"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/car-vs-sea/2026/03/02/2025020957",
+      "savePctg": 0.9688,
+      "gameDate": "2026-03-02",
+      "decision": "W",
+      "playerOnHomeTeam": true,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Hurricanes"
+        },
+        "placeNameWithPreposition": {
+          "default": "Carolina",
+          "fr": "de la Caroline"
+        },
+        "abbrev": "CAR",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/CAR_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/CAR_dark.svg"
+        },
+        "slug": "carolina-hurricanes-12"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/van-vs-sea/2026/02/28/2025020946",
+      "savePctg": 0.9565,
+      "gameDate": "2026-02-28",
+      "decision": "W",
+      "playerOnHomeTeam": true,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Canucks"
+        },
+        "placeNameWithPreposition": {
+          "default": "Vancouver",
+          "fr": "de Vancouver"
+        },
+        "abbrev": "VAN",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/VAN_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg"
+        },
+        "slug": "vancouver-canucks-23"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-dal/2026/02/25/2025020913",
+      "savePctg": 0.8929,
+      "gameDate": "2026-02-25",
+      "decision": "L",
+      "playerOnHomeTeam": false,
+      "homeTeam": {
+        "commonName": {
+          "default": "Stars"
+        },
+        "placeNameWithPreposition": {
+          "default": "Dallas",
+          "fr": "de Dallas"
+        },
+        "abbrev": "DAL",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/DAL_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/DAL_dark.svg"
+        },
+        "slug": "dallas-stars-25"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      }
+    }
+  ],
+  "savePctg5v5Details": {
+    "savePctg": {
+      "value": 0.9161,
+      "leagueAvg": 0.906036,
+      "percentile": 0.7069
+    },
+    "savePctgClose": {
+      "value": 0.9305,
+      "leagueAvg": 0.910367,
+      "percentile": 0.9138
+    },
+    "shots": {
+      "value": 966,
+      "leagueAvg": 520,
+      "percentile": 0.7759
+    },
+    "shotsPer60": {
+      "value": 28.4113,
+      "leagueAvg": 26.568,
+      "percentile": 0.8793
+    }
+  }
+}

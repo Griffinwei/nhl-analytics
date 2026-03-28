@@ -1,0 +1,266 @@
+{
+  "player": {
+    "id": 8478916,
+    "firstName": {
+      "default": "Joey"
+    },
+    "lastName": {
+      "default": "Daccord"
+    },
+    "birthDate": "1996-08-19",
+    "shootsCatches": "L",
+    "sweaterNumber": 35,
+    "slug": "joey-daccord-8478916",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/SEA/8478916.png",
+    "wins": 19,
+    "losses": 18,
+    "overtimeLosses": 6,
+    "goalsAgainstAvg": 2.922607,
+    "savePctg": 0.900916,
+    "gamesPlayed": 43,
+    "team": {
+      "commonName": {
+        "default": "Kraken"
+      },
+      "placeNameWithPreposition": {
+        "default": "Seattle",
+        "fr": "de Seattle"
+      },
+      "abbrev": "SEA",
+      "teamLogo": {
+        "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+        "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+      }
+    }
+  },
+  "seasonsWithEdgeStats": [
+    {
+      "id": 20212022,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20222023,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20232024,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20242025,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20252026,
+      "gameTypes": [
+        2
+      ]
+    }
+  ],
+  "stats": {
+    "goalsAgainstAvg": {
+      "value": 2.92261,
+      "percentile": 0.4138,
+      "leagueAvg": 2.9735
+    },
+    "gamesAbove900": {
+      "value": 0.5116,
+      "percentile": 0.569,
+      "leagueAvg": 0.489
+    },
+    "goalDifferentialPer60": {
+      "value": -0.14492,
+      "percentile": 0.3276,
+      "leagueAvg": 0.1096
+    },
+    "goalSupportAvg": {
+      "value": 2.77768,
+      "percentile": 0.3276,
+      "leagueAvg": 2.9735
+    },
+    "pointPctg": {
+      "value": 0.5116,
+      "percentile": 0.3448,
+      "leagueAvg": 0.4651
+    }
+  },
+  "shotLocationSummary": [
+    {
+      "locationCode": "all",
+      "goalsAgainst": 119,
+      "goalsAgainstPercentile": 0.1897,
+      "goalsAgainstLeagueAvg": 68.4947,
+      "saves": 1082,
+      "savesPercentile": 0.7586,
+      "savesLeagueAvg": 594.9474,
+      "savePctg": 0.900916,
+      "savePctgPercentile": 0.6207,
+      "savePctgLeagueAvg": 0.896759
+    },
+    {
+      "locationCode": "high",
+      "goalsAgainst": 57,
+      "goalsAgainstPercentile": 0.2586,
+      "goalsAgainstLeagueAvg": 35.0947,
+      "saves": 231,
+      "savesPercentile": 0.6207,
+      "savesLeagueAvg": 153.5579,
+      "savePctg": 0.802083,
+      "savePctgPercentile": 0.3621,
+      "savePctgLeagueAvg": 0.813972
+    },
+    {
+      "locationCode": "long",
+      "goalsAgainst": 8,
+      "goalsAgainstPercentile": 0.3103,
+      "goalsAgainstLeagueAvg": 4.6526,
+      "saves": 256,
+      "savesPercentile": 0.8103,
+      "savesLeagueAvg": 133.9895,
+      "savePctg": 0.969697,
+      "savePctgPercentile": 0.6207,
+      "savePctgLeagueAvg": 0.966441
+    },
+    {
+      "locationCode": "mid",
+      "goalsAgainst": 38,
+      "goalsAgainstPercentile": 0.2241,
+      "goalsAgainstLeagueAvg": 22.1263,
+      "saves": 304,
+      "savesPercentile": 0.7586,
+      "savesLeagueAvg": 169.9684,
+      "savePctg": 0.888889,
+      "savePctgPercentile": 0.569,
+      "savePctgLeagueAvg": 0.884816
+    }
+  ],
+  "shotLocationDetails": [
+    {
+      "area": "Behind the Net",
+      "saves": 22,
+      "savesPercentile": 1.0,
+      "savePctg": 0.956522,
+      "savePctgPercentile": 0.3966
+    },
+    {
+      "area": "Beyond Red Line",
+      "saves": 30,
+      "savesPercentile": 0.7979,
+      "savePctg": 1.0,
+      "savePctgPercentile": 0.0172
+    },
+    {
+      "area": "Center Point",
+      "saves": 90,
+      "savesPercentile": 0.8085,
+      "savePctg": 0.947368,
+      "savePctgPercentile": 0.3276
+    },
+    {
+      "area": "Crease",
+      "saves": 30,
+      "savesPercentile": 0.8085,
+      "savePctg": 0.769231,
+      "savePctgPercentile": 0.5
+    },
+    {
+      "area": "High Slot",
+      "saves": 88,
+      "savesPercentile": 0.7872,
+      "savePctg": 0.888889,
+      "savePctgPercentile": 0.8276
+    },
+    {
+      "area": "L Circle",
+      "saves": 116,
+      "savesPercentile": 0.9149,
+      "savePctg": 0.878788,
+      "savePctgPercentile": 0.2586
+    },
+    {
+      "area": "L Corner",
+      "saves": 2,
+      "savesPercentile": 0.6383,
+      "savePctg": 0.666667,
+      "savePctgPercentile": 0.2069
+    },
+    {
+      "area": "L Net Side",
+      "saves": 29,
+      "savesPercentile": 0.883,
+      "savePctg": 0.935484,
+      "savePctgPercentile": 0.6552
+    },
+    {
+      "area": "L Point",
+      "saves": 74,
+      "savesPercentile": 0.8511,
+      "savePctg": 0.961039,
+      "savePctgPercentile": 0.2586
+    },
+    {
+      "area": "Low Slot",
+      "saves": 201,
+      "savesPercentile": 0.7553,
+      "savePctg": 0.807229,
+      "savePctgPercentile": 0.3103
+    },
+    {
+      "area": "Offensive Neutral Zone",
+      "saves": 24,
+      "savesPercentile": 0.8191,
+      "savePctg": 1.0,
+      "savePctgPercentile": 0.0345
+    },
+    {
+      "area": "Outside L",
+      "saves": 82,
+      "savesPercentile": 0.9681,
+      "savePctg": 0.953488,
+      "savePctgPercentile": 0.3276
+    },
+    {
+      "area": "Outside R",
+      "saves": 69,
+      "savesPercentile": 0.9255,
+      "savePctg": 0.971831,
+      "savePctgPercentile": 0.6207
+    },
+    {
+      "area": "R Circle",
+      "saves": 100,
+      "savesPercentile": 0.8298,
+      "savePctg": 0.900901,
+      "savePctgPercentile": 0.5172
+    },
+    {
+      "area": "R Corner",
+      "saves": 6,
+      "savesPercentile": 0.9894,
+      "savePctg": 1.0,
+      "savePctgPercentile": 0.3276
+    },
+    {
+      "area": "R Net Side",
+      "saves": 27,
+      "savesPercentile": 0.8617,
+      "savePctg": 0.818182,
+      "savePctgPercentile": 0.1207
+    },
+    {
+      "area": "R Point",
+      "saves": 92,
+      "savesPercentile": 0.9149,
+      "savePctg": 1.0,
+      "savePctgPercentile": 0.7069
+    }
+  ]
+}

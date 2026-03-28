@@ -1,0 +1,267 @@
+{
+  "player": {
+    "id": 8476914,
+    "firstName": {
+      "default": "Joonas"
+    },
+    "lastName": {
+      "default": "Korpisalo"
+    },
+    "birthDate": "1994-04-28",
+    "shootsCatches": "L",
+    "sweaterNumber": 70,
+    "slug": "joonas-korpisalo-8476914",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8476914.png",
+    "wins": 12,
+    "losses": 9,
+    "overtimeLosses": 4,
+    "goalsAgainstAvg": 3.284598,
+    "savePctg": 0.890957,
+    "gamesPlayed": 27,
+    "team": {
+      "commonName": {
+        "default": "Bruins"
+      },
+      "placeNameWithPreposition": {
+        "default": "Boston",
+        "fr": "de Boston"
+      },
+      "abbrev": "BOS",
+      "teamLogo": {
+        "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+        "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+      }
+    }
+  },
+  "seasonsWithEdgeStats": [
+    {
+      "id": 20212022,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20222023,
+      "gameTypes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 20232024,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20242025,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20252026,
+      "gameTypes": [
+        2
+      ]
+    }
+  ],
+  "stats": {
+    "goalsAgainstAvg": {
+      "value": 3.2846,
+      "percentile": 0.1207,
+      "leagueAvg": 2.9735
+    },
+    "gamesAbove900": {
+      "value": 0.4,
+      "percentile": 0.2241,
+      "leagueAvg": 0.489
+    },
+    "goalDifferentialPer60": {
+      "value": 0.24034,
+      "percentile": 0.569,
+      "leagueAvg": 0.1096
+    },
+    "goalSupportAvg": {
+      "value": 3.52493,
+      "percentile": 0.8793,
+      "leagueAvg": 2.9735
+    },
+    "pointPctg": {
+      "value": 0.5185,
+      "percentile": 0.431,
+      "leagueAvg": 0.4651
+    }
+  },
+  "shotLocationSummary": [
+    {
+      "locationCode": "all",
+      "goalsAgainst": 82,
+      "goalsAgainstPercentile": 0.6379,
+      "goalsAgainstLeagueAvg": 68.4947,
+      "saves": 670,
+      "savesPercentile": 0.3103,
+      "savesLeagueAvg": 594.9474,
+      "savePctg": 0.890957,
+      "savePctgPercentile": 0.2931,
+      "savePctgLeagueAvg": 0.896759
+    },
+    {
+      "locationCode": "high",
+      "goalsAgainst": 35,
+      "goalsAgainstPercentile": 0.8276,
+      "goalsAgainstLeagueAvg": 35.0947,
+      "saves": 192,
+      "savesPercentile": 0.3448,
+      "savesLeagueAvg": 153.5579,
+      "savePctg": 0.845815,
+      "savePctgPercentile": 0.931,
+      "savePctgLeagueAvg": 0.813972
+    },
+    {
+      "locationCode": "long",
+      "goalsAgainst": 6,
+      "goalsAgainstPercentile": 0.4828,
+      "goalsAgainstLeagueAvg": 4.6526,
+      "saves": 164,
+      "savesPercentile": 0.3966,
+      "savesLeagueAvg": 133.9895,
+      "savePctg": 0.964706,
+      "savePctgPercentile": 0.3793,
+      "savePctgLeagueAvg": 0.966441
+    },
+    {
+      "locationCode": "mid",
+      "goalsAgainst": 31,
+      "goalsAgainstPercentile": 0.4828,
+      "goalsAgainstLeagueAvg": 22.1263,
+      "saves": 171,
+      "savesPercentile": 0.1724,
+      "savesLeagueAvg": 169.9684,
+      "savePctg": 0.846535,
+      "savePctgPercentile": 0.069,
+      "savePctgLeagueAvg": 0.884816
+    }
+  ],
+  "shotLocationDetails": [
+    {
+      "area": "Behind the Net",
+      "saves": 8,
+      "savesPercentile": 0.766,
+      "savePctg": 0.888889,
+      "savePctgPercentile": 0.2414
+    },
+    {
+      "area": "Beyond Red Line",
+      "saves": 13,
+      "savesPercentile": 0.4362,
+      "savePctg": 1.0,
+      "savePctgPercentile": 0.0172
+    },
+    {
+      "area": "Center Point",
+      "saves": 59,
+      "savesPercentile": 0.5957,
+      "savePctg": 0.967213,
+      "savePctgPercentile": 0.7069
+    },
+    {
+      "area": "Crease",
+      "saves": 24,
+      "savesPercentile": 0.6489,
+      "savePctg": 0.727273,
+      "savePctgPercentile": 0.2931
+    },
+    {
+      "area": "High Slot",
+      "saves": 63,
+      "savesPercentile": 0.5957,
+      "savePctg": 0.818182,
+      "savePctgPercentile": 0.2586
+    },
+    {
+      "area": "L Circle",
+      "saves": 61,
+      "savesPercentile": 0.5319,
+      "savePctg": 0.871429,
+      "savePctgPercentile": 0.1897
+    },
+    {
+      "area": "L Corner",
+      "saves": 3,
+      "savesPercentile": 0.8191,
+      "savePctg": 1.0,
+      "savePctgPercentile": 0.2586
+    },
+    {
+      "area": "L Net Side",
+      "saves": 19,
+      "savesPercentile": 0.6383,
+      "savePctg": 0.904762,
+      "savePctgPercentile": 0.4655
+    },
+    {
+      "area": "L Point",
+      "saves": 49,
+      "savesPercentile": 0.5532,
+      "savePctg": 0.960784,
+      "savePctgPercentile": 0.2414
+    },
+    {
+      "area": "Low Slot",
+      "saves": 168,
+      "savesPercentile": 0.5957,
+      "savePctg": 0.865979,
+      "savePctgPercentile": 0.9828
+    },
+    {
+      "area": "Offensive Neutral Zone",
+      "saves": 8,
+      "savesPercentile": 0.3404,
+      "savePctg": 1.0,
+      "savePctgPercentile": 0.0345
+    },
+    {
+      "area": "Outside L",
+      "saves": 40,
+      "savesPercentile": 0.5532,
+      "savePctg": 0.930233,
+      "savePctgPercentile": 0.1552
+    },
+    {
+      "area": "Outside R",
+      "saves": 38,
+      "savesPercentile": 0.5426,
+      "savePctg": 1.0,
+      "savePctgPercentile": 0.8276
+    },
+    {
+      "area": "R Circle",
+      "saves": 47,
+      "savesPercentile": 0.3936,
+      "savePctg": 0.854545,
+      "savePctgPercentile": 0.1552
+    },
+    {
+      "area": "R Corner",
+      "saves": 0,
+      "savesPercentile": 0.0,
+      "savePctg": 0.0,
+      "savePctgPercentile": 0.0
+    },
+    {
+      "area": "R Net Side",
+      "saves": 14,
+      "savesPercentile": 0.4894,
+      "savePctg": 0.777778,
+      "savePctgPercentile": 0.0862
+    },
+    {
+      "area": "R Point",
+      "saves": 56,
+      "savesPercentile": 0.6596,
+      "savePctg": 0.965517,
+      "savePctgPercentile": 0.2414
+    }
+  ]
+}

@@ -1,0 +1,789 @@
+{
+  "player": {
+    "id": 8478042,
+    "firstName": {
+      "default": "Viktor"
+    },
+    "lastName": {
+      "default": "Arvidsson"
+    },
+    "birthDate": "1993-04-08",
+    "shootsCatches": "R",
+    "sweaterNumber": 71,
+    "position": "L",
+    "slug": "viktor-arvidsson-8478042",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/BOS/8478042.png",
+    "goals": 20,
+    "assists": 22,
+    "points": 42,
+    "gamesPlayed": 60,
+    "team": {
+      "commonName": {
+        "default": "Bruins"
+      },
+      "placeNameWithPreposition": {
+        "default": "Boston",
+        "fr": "de Boston"
+      },
+      "abbrev": "BOS",
+      "teamLogo": {
+        "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+        "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+      },
+      "slug": "boston-bruins-6"
+    }
+  },
+  "seasonsWithEdgeStats": [
+    {
+      "id": 20212022,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20222023,
+      "gameTypes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 20232024,
+      "gameTypes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 20242025,
+      "gameTypes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 20252026,
+      "gameTypes": [
+        2
+      ]
+    }
+  ],
+  "shotSpeedDetails": {
+    "topShotSpeed": {
+      "imperial": 94.63,
+      "metric": 152.2922,
+      "overlay": {
+        "player": {
+          "firstName": {
+            "default": "Viktor"
+          },
+          "lastName": {
+            "default": "Arvidsson"
+          }
+        },
+        "gameDate": "2026-01-08",
+        "awayTeam": {
+          "abbrev": "CGY",
+          "score": 1
+        },
+        "homeTeam": {
+          "abbrev": "BOS",
+          "score": 4
+        },
+        "gameOutcome": {
+          "lastPeriodType": "REG"
+        },
+        "periodDescriptor": {
+          "maxRegulationPeriods": 3,
+          "number": 1,
+          "periodType": "REG"
+        },
+        "timeInPeriod": "13:20",
+        "gameType": 2
+      }
+    },
+    "avgShotSpeed": {
+      "imperial": 52.743,
+      "metric": 84.8816
+    },
+    "shotAttemptsOver100": 0,
+    "shotAttempts90To100": 4,
+    "shotAttempts80To90": 21,
+    "shotAttempts70To80": 50
+  },
+  "skatingSpeedDetails": {
+    "maxSkatingSpeed": {
+      "imperial": 22.7079,
+      "metric": 36.5448,
+      "overlay": {
+        "player": {
+          "firstName": {
+            "default": "Viktor"
+          },
+          "lastName": {
+            "default": "Arvidsson"
+          }
+        },
+        "gameDate": "2025-10-19",
+        "awayTeam": {
+          "abbrev": "BOS",
+          "score": 2
+        },
+        "homeTeam": {
+          "abbrev": "UTA",
+          "score": 3
+        },
+        "gameOutcome": {
+          "lastPeriodType": "REG"
+        },
+        "periodDescriptor": {
+          "maxRegulationPeriods": 3,
+          "number": 2,
+          "periodType": "REG"
+        },
+        "timeInPeriod": "14:06",
+        "gameType": 2
+      }
+    },
+    "burstsOver22": 6,
+    "bursts20To22": 56,
+    "bursts18To20": 305
+  },
+  "skatingDistanceLast10": [
+    {
+      "gameCenterLink": "/gamecenter/buf-vs-bos/2026/03/25/2025021135",
+      "gameDate": "2026-03-25",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 2.2369,
+        "metric": 3.6
+      },
+      "toi": 812.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Sabres"
+        },
+        "placeNameWithPreposition": {
+          "default": "Buffalo",
+          "fr": "de Buffalo"
+        },
+        "abbrev": "BUF",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BUF_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BUF_dark.svg"
+        },
+        "slug": "buffalo-sabres-7"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-tor/2026/03/24/2025021120",
+      "gameDate": "2026-03-24",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 2.2547,
+        "metric": 3.6286
+      },
+      "toi": 867.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Maple Leafs"
+        },
+        "placeNameWithPreposition": {
+          "default": "Toronto",
+          "fr": "de Toronto"
+        },
+        "abbrev": "TOR",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/TOR_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/TOR_dark.svg"
+        },
+        "slug": "toronto-maple-leafs-10"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/det-vs-bos/2026/03/21/2025021108",
+      "gameDate": "2026-03-21",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 2.5235,
+        "metric": 4.0611
+      },
+      "toi": 963.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Red Wings"
+        },
+        "placeNameWithPreposition": {
+          "default": "Detroit",
+          "fr": "de Detroit"
+        },
+        "abbrev": "DET",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/DET_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/DET_dark.svg?season=20252026"
+        },
+        "slug": "detroit-red-wings-17"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-wpg/2026/03/19/2025021083",
+      "gameDate": "2026-03-19",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 2.1516,
+        "metric": 3.4627
+      },
+      "toi": 855.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Jets"
+        },
+        "placeNameWithPreposition": {
+          "default": "Winnipeg",
+          "fr": "de Winnipeg"
+        },
+        "abbrev": "WPG",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/WPG_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/WPG_dark.svg"
+        },
+        "slug": "winnipeg-jets-52"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/mtl-vs-bos/2026/03/17/2025021069",
+      "gameDate": "2026-03-17",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 2.5359,
+        "metric": 4.0811
+      },
+      "toi": 1029.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Canadiens"
+        },
+        "placeNameWithPreposition": {
+          "default": "Montr\u00e9al",
+          "fr": "de Montr\u00e9al"
+        },
+        "abbrev": "MTL",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/MTL_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/MTL_dark.svg"
+        },
+        "slug": "montreal-canadiens-8"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/njd-vs-bos/2026/03/16/2025021064",
+      "gameDate": "2026-03-16",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 2.3532,
+        "metric": 3.7871
+      },
+      "toi": 916.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Devils"
+        },
+        "placeNameWithPreposition": {
+          "default": "New Jersey",
+          "fr": "du New Jersey"
+        },
+        "abbrev": "NJD",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/NJD_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/NJD_dark.svg"
+        },
+        "slug": "new-jersey-devils-1"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/wsh-vs-bos/2026/03/14/2025021044",
+      "gameDate": "2026-03-14",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 2.5583,
+        "metric": 4.1172
+      },
+      "toi": 940.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Capitals"
+        },
+        "placeNameWithPreposition": {
+          "default": "Washington",
+          "fr": "de Washington"
+        },
+        "abbrev": "WSH",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/WSH_secondary_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/WSH_secondary_dark.svg"
+        },
+        "slug": "washington-capitals-15"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-sjs/2026/03/12/2025021027",
+      "gameDate": "2026-03-12",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 2.7167,
+        "metric": 4.372
+      },
+      "toi": 1044.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Sharks"
+        },
+        "placeNameWithPreposition": {
+          "default": "San Jose",
+          "fr": "de San Jose"
+        },
+        "abbrev": "SJS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SJS_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SJS_dark.svg"
+        },
+        "slug": "san-jose-sharks-28"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/bos-vs-lak/2026/03/10/2025021012",
+      "gameDate": "2026-03-10",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 2.2113,
+        "metric": 3.5588
+      },
+      "toi": 800.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kings"
+        },
+        "placeNameWithPreposition": {
+          "default": "Los Angeles",
+          "fr": "de Los Angeles"
+        },
+        "abbrev": "LAK",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/LAK_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/LAK_dark.svg"
+        },
+        "slug": "los-angeles-kings-26"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/pit-vs-bos/2026/03/08/2025021002",
+      "gameDate": "2026-03-08",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 2.2266,
+        "metric": 3.5833
+      },
+      "toi": 874.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Penguins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Pittsburgh",
+          "fr": "de Pittsburgh"
+        },
+        "abbrev": "PIT",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/PIT_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/PIT_dark.svg"
+        },
+        "slug": "pittsburgh-penguins-5"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Bruins"
+        },
+        "placeNameWithPreposition": {
+          "default": "Boston",
+          "fr": "de Boston"
+        },
+        "abbrev": "BOS",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/BOS_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/BOS_dark.svg?season=20252026"
+        },
+        "slug": "boston-bruins-6"
+      }
+    }
+  ],
+  "skatingDistanceDetails": {
+    "distanceTotal": {
+      "imperial": 136.6461,
+      "metric": 219.8998
+    },
+    "distancePer60": {
+      "imperial": 9.3684,
+      "metric": 15.0763
+    },
+    "distanceMaxGame": {
+      "imperial": 2.8761,
+      "metric": 4.6284,
+      "overlay": {
+        "player": {
+          "firstName": {
+            "default": "Viktor"
+          },
+          "lastName": {
+            "default": "Arvidsson"
+          }
+        },
+        "gameDate": "2025-11-04",
+        "awayTeam": {
+          "abbrev": "BOS",
+          "score": 4
+        },
+        "homeTeam": {
+          "abbrev": "NYI",
+          "score": 3
+        },
+        "gameOutcome": {
+          "lastPeriodType": "SO"
+        },
+        "periodDescriptor": {
+          "maxRegulationPeriods": 3,
+          "number": 3,
+          "periodType": "REG"
+        },
+        "gameType": 2
+      }
+    },
+    "distanceMaxPeriod": {
+      "imperial": 1.2257,
+      "metric": 1.9725,
+      "overlay": {
+        "player": {
+          "firstName": {
+            "default": "Viktor"
+          },
+          "lastName": {
+            "default": "Arvidsson"
+          }
+        },
+        "gameDate": "2025-11-13",
+        "awayTeam": {
+          "abbrev": "BOS",
+          "score": 3
+        },
+        "homeTeam": {
+          "abbrev": "OTT",
+          "score": 5
+        },
+        "gameOutcome": {
+          "lastPeriodType": "REG"
+        },
+        "periodDescriptor": {
+          "maxRegulationPeriods": 3,
+          "number": 3,
+          "periodType": "REG"
+        },
+        "gameType": 2
+      }
+    }
+  },
+  "shotLocationDetails": [
+    {
+      "area": "Behind the Net",
+      "sog": 3,
+      "goals": 1,
+      "shootingPctg": 0.3333
+    },
+    {
+      "area": "Beyond Red Line",
+      "sog": 2,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Center Point",
+      "sog": 6,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Crease",
+      "sog": 7,
+      "goals": 1,
+      "shootingPctg": 0.1429
+    },
+    {
+      "area": "High Slot",
+      "sog": 17,
+      "goals": 2,
+      "shootingPctg": 0.1176
+    },
+    {
+      "area": "L Circle",
+      "sog": 16,
+      "goals": 1,
+      "shootingPctg": 0.0625
+    },
+    {
+      "area": "L Corner",
+      "sog": 0,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "L Net Side",
+      "sog": 0,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "L Point",
+      "sog": 7,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Low Slot",
+      "sog": 44,
+      "goals": 9,
+      "shootingPctg": 0.2045
+    },
+    {
+      "area": "Offensive Neutral Zone",
+      "sog": 7,
+      "goals": 1,
+      "shootingPctg": 0.1429
+    },
+    {
+      "area": "Outside L",
+      "sog": 7,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Outside R",
+      "sog": 16,
+      "goals": 2,
+      "shootingPctg": 0.125
+    },
+    {
+      "area": "R Circle",
+      "sog": 15,
+      "goals": 3,
+      "shootingPctg": 0.2
+    },
+    {
+      "area": "R Corner",
+      "sog": 0,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "R Net Side",
+      "sog": 2,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "R Point",
+      "sog": 5,
+      "goals": 0,
+      "shootingPctg": 0.0
+    }
+  ],
+  "shotLocationTotals": [
+    {
+      "locationCode": "all",
+      "sog": 154,
+      "goals": 20,
+      "shootingPctg": 0.1299
+    },
+    {
+      "locationCode": "high",
+      "sog": 51,
+      "goals": 10,
+      "shootingPctg": 0.1961
+    },
+    {
+      "locationCode": "high+long",
+      "sog": 69,
+      "goals": 10,
+      "shootingPctg": 0.1449
+    },
+    {
+      "locationCode": "high+mid",
+      "sog": 99,
+      "goals": 16,
+      "shootingPctg": 0.1616
+    },
+    {
+      "locationCode": "high+mid+long",
+      "sog": 117,
+      "goals": 16,
+      "shootingPctg": 0.1368
+    },
+    {
+      "locationCode": "long",
+      "sog": 18,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "locationCode": "mid",
+      "sog": 48,
+      "goals": 6,
+      "shootingPctg": 0.125
+    }
+  ],
+  "zoneTimeDetails": {
+    "offensiveZonePctg": 0.41329454,
+    "offensiveZoneLeagueAvg": 0.42397296,
+    "neutralZonePctg": 0.1869122,
+    "neutralZoneLeagueAvg": 0.1781081,
+    "defensiveZonePctg": 0.39979326,
+    "defensiveZoneLeagueAvg": 0.39791894
+  },
+  "zoneStarts": {
+    "offensiveZoneStarts": 0.2947,
+    "neutralZoneStarts": 0.3182,
+    "defensiveZoneStarts": 0.3871
+  }
+}

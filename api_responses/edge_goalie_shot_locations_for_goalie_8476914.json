@@ -1,0 +1,253 @@
+{
+  "shotLocationDetails": [
+    {
+      "area": "Behind the Net",
+      "shotsAgainst": 9,
+      "saves": 8,
+      "goalsAgainst": 1,
+      "savePctg": 0.888889,
+      "shotsAgainstPercentile": 0.7979,
+      "savesPercentile": 0.766,
+      "goalsAgainstPercentile": 0.7234,
+      "savePctgPercentile": 0.2414
+    },
+    {
+      "area": "Beyond Red Line",
+      "shotsAgainst": 13,
+      "saves": 13,
+      "goalsAgainst": 0,
+      "savePctg": 1.0,
+      "shotsAgainstPercentile": 0.4255,
+      "savesPercentile": 0.4362,
+      "goalsAgainstPercentile": 0.0,
+      "savePctgPercentile": 0.0172
+    },
+    {
+      "area": "Center Point",
+      "shotsAgainst": 61,
+      "saves": 59,
+      "goalsAgainst": 2,
+      "savePctg": 0.967213,
+      "shotsAgainstPercentile": 0.5957,
+      "savesPercentile": 0.5957,
+      "goalsAgainstPercentile": 0.4468,
+      "savePctgPercentile": 0.7069
+    },
+    {
+      "area": "Crease",
+      "shotsAgainst": 33,
+      "saves": 24,
+      "goalsAgainst": 9,
+      "savePctg": 0.727273,
+      "shotsAgainstPercentile": 0.7021,
+      "savesPercentile": 0.6489,
+      "goalsAgainstPercentile": 0.7553,
+      "savePctgPercentile": 0.2931
+    },
+    {
+      "area": "High Slot",
+      "shotsAgainst": 77,
+      "saves": 63,
+      "goalsAgainst": 14,
+      "savePctg": 0.818182,
+      "shotsAgainstPercentile": 0.6277,
+      "savesPercentile": 0.5957,
+      "goalsAgainstPercentile": 0.7234,
+      "savePctgPercentile": 0.2586
+    },
+    {
+      "area": "L Circle",
+      "shotsAgainst": 70,
+      "saves": 61,
+      "goalsAgainst": 9,
+      "savePctg": 0.871429,
+      "shotsAgainstPercentile": 0.5319,
+      "savesPercentile": 0.5319,
+      "goalsAgainstPercentile": 0.7021,
+      "savePctgPercentile": 0.1897
+    },
+    {
+      "area": "L Corner",
+      "shotsAgainst": 3,
+      "saves": 3,
+      "goalsAgainst": 0,
+      "savePctg": 1.0,
+      "shotsAgainstPercentile": 0.7979,
+      "savesPercentile": 0.8191,
+      "goalsAgainstPercentile": 0.0,
+      "savePctgPercentile": 0.2586
+    },
+    {
+      "area": "L Net Side",
+      "shotsAgainst": 21,
+      "saves": 19,
+      "goalsAgainst": 2,
+      "savePctg": 0.904762,
+      "shotsAgainstPercentile": 0.6277,
+      "savesPercentile": 0.6383,
+      "goalsAgainstPercentile": 0.6064,
+      "savePctgPercentile": 0.4655
+    },
+    {
+      "area": "L Point",
+      "shotsAgainst": 51,
+      "saves": 49,
+      "goalsAgainst": 2,
+      "savePctg": 0.960784,
+      "shotsAgainstPercentile": 0.5532,
+      "savesPercentile": 0.5532,
+      "goalsAgainstPercentile": 0.7021,
+      "savePctgPercentile": 0.2414
+    },
+    {
+      "area": "Low Slot",
+      "shotsAgainst": 194,
+      "saves": 168,
+      "goalsAgainst": 26,
+      "savePctg": 0.865979,
+      "shotsAgainstPercentile": 0.5957,
+      "savesPercentile": 0.5957,
+      "goalsAgainstPercentile": 0.4043,
+      "savePctgPercentile": 0.9828
+    },
+    {
+      "area": "Offensive Neutral Zone",
+      "shotsAgainst": 8,
+      "saves": 8,
+      "goalsAgainst": 0,
+      "savePctg": 1.0,
+      "shotsAgainstPercentile": 0.3404,
+      "savesPercentile": 0.3404,
+      "goalsAgainstPercentile": 0.0,
+      "savePctgPercentile": 0.0345
+    },
+    {
+      "area": "Outside L",
+      "shotsAgainst": 43,
+      "saves": 40,
+      "goalsAgainst": 3,
+      "savePctg": 0.930233,
+      "shotsAgainstPercentile": 0.5851,
+      "savesPercentile": 0.5532,
+      "goalsAgainstPercentile": 0.7553,
+      "savePctgPercentile": 0.1552
+    },
+    {
+      "area": "Outside R",
+      "shotsAgainst": 38,
+      "saves": 38,
+      "goalsAgainst": 0,
+      "savePctg": 1.0,
+      "shotsAgainstPercentile": 0.5213,
+      "savesPercentile": 0.5426,
+      "goalsAgainstPercentile": 0.0,
+      "savePctgPercentile": 0.8276
+    },
+    {
+      "area": "R Circle",
+      "shotsAgainst": 55,
+      "saves": 47,
+      "goalsAgainst": 8,
+      "savePctg": 0.854545,
+      "shotsAgainstPercentile": 0.3936,
+      "savesPercentile": 0.3936,
+      "goalsAgainstPercentile": 0.5851,
+      "savePctgPercentile": 0.1552
+    },
+    {
+      "area": "R Corner",
+      "shotsAgainst": 0,
+      "saves": 0,
+      "goalsAgainst": 0,
+      "savePctg": 0.0,
+      "shotsAgainstPercentile": 0.0,
+      "savesPercentile": 0.0,
+      "goalsAgainstPercentile": 0.0,
+      "savePctgPercentile": 0.0
+    },
+    {
+      "area": "R Net Side",
+      "shotsAgainst": 18,
+      "saves": 14,
+      "goalsAgainst": 4,
+      "savePctg": 0.777778,
+      "shotsAgainstPercentile": 0.5851,
+      "savesPercentile": 0.4894,
+      "goalsAgainstPercentile": 0.8723,
+      "savePctgPercentile": 0.0862
+    },
+    {
+      "area": "R Point",
+      "shotsAgainst": 58,
+      "saves": 56,
+      "goalsAgainst": 2,
+      "savePctg": 0.965517,
+      "shotsAgainstPercentile": 0.6809,
+      "savesPercentile": 0.6596,
+      "goalsAgainstPercentile": 0.7128,
+      "savePctgPercentile": 0.2414
+    }
+  ],
+  "shotLocationTotals": [
+    {
+      "locationCode": "all",
+      "shotsAgainst": 752,
+      "goalsAgainst": 82,
+      "saves": 670,
+      "savePctg": 0.890957,
+      "shotsAgainstPercentile": 0.2931,
+      "goalsAgainstPercentile": 0.6379,
+      "savesPercentile": 0.3103,
+      "savePctgPercentile": 0.2931,
+      "shotsAgainstLeagueAvg": 663.4421,
+      "goalsAgainstLeagueAvg": 68.4947,
+      "savesLeagueAvg": 594.9474,
+      "savePctgLeagueAvg": 0.896759
+    },
+    {
+      "locationCode": "high",
+      "shotsAgainst": 227,
+      "goalsAgainst": 35,
+      "saves": 192,
+      "savePctg": 0.845815,
+      "shotsAgainstPercentile": 0.3448,
+      "goalsAgainstPercentile": 0.8276,
+      "savesPercentile": 0.3448,
+      "savePctgPercentile": 0.931,
+      "shotsAgainstLeagueAvg": 188.6526,
+      "goalsAgainstLeagueAvg": 35.0947,
+      "savesLeagueAvg": 153.5579,
+      "savePctgLeagueAvg": 0.813972
+    },
+    {
+      "locationCode": "long",
+      "shotsAgainst": 170,
+      "goalsAgainst": 6,
+      "saves": 164,
+      "savePctg": 0.964706,
+      "shotsAgainstPercentile": 0.4138,
+      "goalsAgainstPercentile": 0.4828,
+      "savesPercentile": 0.3966,
+      "savePctgPercentile": 0.3793,
+      "shotsAgainstLeagueAvg": 138.6421,
+      "goalsAgainstLeagueAvg": 4.6526,
+      "savesLeagueAvg": 133.9895,
+      "savePctgLeagueAvg": 0.966441
+    },
+    {
+      "locationCode": "mid",
+      "shotsAgainst": 202,
+      "goalsAgainst": 31,
+      "saves": 171,
+      "savePctg": 0.846535,
+      "shotsAgainstPercentile": 0.2414,
+      "goalsAgainstPercentile": 0.4828,
+      "savesPercentile": 0.1724,
+      "savePctgPercentile": 0.069,
+      "shotsAgainstLeagueAvg": 192.0947,
+      "goalsAgainstLeagueAvg": 22.1263,
+      "savesLeagueAvg": 169.9684,
+      "savePctgLeagueAvg": 0.884816
+    }
+  ]
+}

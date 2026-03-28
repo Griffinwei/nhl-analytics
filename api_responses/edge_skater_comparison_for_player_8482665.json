@@ -1,0 +1,788 @@
+{
+  "player": {
+    "id": 8482665,
+    "firstName": {
+      "default": "Matty"
+    },
+    "lastName": {
+      "default": "Beniers"
+    },
+    "birthDate": "2002-11-05",
+    "shootsCatches": "L",
+    "sweaterNumber": 10,
+    "position": "C",
+    "slug": "matty-beniers-8482665",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20252026/SEA/8482665.png",
+    "goals": 19,
+    "assists": 26,
+    "points": 45,
+    "gamesPlayed": 70,
+    "team": {
+      "commonName": {
+        "default": "Kraken"
+      },
+      "placeNameWithPreposition": {
+        "default": "Seattle",
+        "fr": "de Seattle"
+      },
+      "abbrev": "SEA",
+      "teamLogo": {
+        "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+        "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+      },
+      "slug": "seattle-kraken-55"
+    }
+  },
+  "seasonsWithEdgeStats": [
+    {
+      "id": 20212022,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20222023,
+      "gameTypes": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 20232024,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20242025,
+      "gameTypes": [
+        2
+      ]
+    },
+    {
+      "id": 20252026,
+      "gameTypes": [
+        2
+      ]
+    }
+  ],
+  "shotSpeedDetails": {
+    "topShotSpeed": {
+      "imperial": 90.36,
+      "metric": 145.4203,
+      "overlay": {
+        "player": {
+          "firstName": {
+            "default": "Matty"
+          },
+          "lastName": {
+            "default": "Beniers"
+          }
+        },
+        "gameDate": "2025-11-13",
+        "awayTeam": {
+          "abbrev": "WPG",
+          "score": 3
+        },
+        "homeTeam": {
+          "abbrev": "SEA",
+          "score": 5
+        },
+        "gameOutcome": {
+          "lastPeriodType": "REG"
+        },
+        "periodDescriptor": {
+          "maxRegulationPeriods": 3,
+          "number": 3,
+          "periodType": "REG"
+        },
+        "timeInPeriod": "04:02",
+        "gameType": 2
+      }
+    },
+    "avgShotSpeed": {
+      "imperial": 53.4042,
+      "metric": 85.9457
+    },
+    "shotAttemptsOver100": 0,
+    "shotAttempts90To100": 1,
+    "shotAttempts80To90": 18,
+    "shotAttempts70To80": 52
+  },
+  "skatingSpeedDetails": {
+    "maxSkatingSpeed": {
+      "imperial": 22.0412,
+      "metric": 35.4718,
+      "overlay": {
+        "player": {
+          "firstName": {
+            "default": "Matty"
+          },
+          "lastName": {
+            "default": "Beniers"
+          }
+        },
+        "gameDate": "2026-03-04",
+        "awayTeam": {
+          "abbrev": "STL",
+          "score": 3
+        },
+        "homeTeam": {
+          "abbrev": "SEA",
+          "score": 2
+        },
+        "gameOutcome": {
+          "lastPeriodType": "REG"
+        },
+        "periodDescriptor": {
+          "maxRegulationPeriods": 3,
+          "number": 3,
+          "periodType": "REG"
+        },
+        "timeInPeriod": "18:41",
+        "gameType": 2
+      }
+    },
+    "burstsOver22": 1,
+    "bursts20To22": 113,
+    "bursts18To20": 619
+  },
+  "skatingDistanceLast10": [
+    {
+      "gameCenterLink": "/gamecenter/fla-vs-sea/2026/03/24/2025021123",
+      "gameDate": "2026-03-24",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 4.0517,
+        "metric": 6.5206
+      },
+      "toi": 1372.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Panthers"
+        },
+        "placeNameWithPreposition": {
+          "default": "Florida",
+          "fr": "de la Floride"
+        },
+        "abbrev": "FLA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/FLA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/FLA_dark.svg"
+        },
+        "slug": "florida-panthers-13"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/cbj-vs-sea/2026/03/21/2025021104",
+      "gameDate": "2026-03-21",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 2.8434,
+        "metric": 4.576
+      },
+      "toi": 987.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Blue Jackets"
+        },
+        "placeNameWithPreposition": {
+          "default": "Columbus",
+          "fr": "de Columbus"
+        },
+        "abbrev": "CBJ",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/CBJ_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/CBJ_dark.svg"
+        },
+        "slug": "columbus-blue-jackets-29"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/nsh-vs-sea/2026/03/19/2025021087",
+      "gameDate": "2026-03-19",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 3.4351,
+        "metric": 5.5282
+      },
+      "toi": 1273.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Predators"
+        },
+        "placeNameWithPreposition": {
+          "default": "Nashville",
+          "fr": "de Nashville"
+        },
+        "abbrev": "NSH",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/NSH_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg"
+        },
+        "slug": "nashville-predators-18"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-tbl/2026/03/17/2025021076",
+      "gameDate": "2026-03-17",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 3.1259,
+        "metric": 5.0307
+      },
+      "toi": 1101.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Lightning"
+        },
+        "placeNameWithPreposition": {
+          "default": "Tampa Bay",
+          "fr": "de Tampa Bay"
+        },
+        "abbrev": "TBL",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/TBL_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/TBL_dark.svg"
+        },
+        "slug": "tampa-bay-lightning-14"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-fla/2026/03/15/2025021062",
+      "gameDate": "2026-03-15",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 2.6578,
+        "metric": 4.2773
+      },
+      "toi": 997.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Panthers"
+        },
+        "placeNameWithPreposition": {
+          "default": "Florida",
+          "fr": "de la Floride"
+        },
+        "abbrev": "FLA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/FLA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/FLA_dark.svg"
+        },
+        "slug": "florida-panthers-13"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/van-vs-sea/2026/03/14/2025021055",
+      "gameDate": "2026-03-14",
+      "playerOnHomeTeam": false,
+      "distanceSkated": {
+        "imperial": 3.0125,
+        "metric": 4.8482
+      },
+      "toi": 1111.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Canucks"
+        },
+        "placeNameWithPreposition": {
+          "default": "Vancouver",
+          "fr": "de Vancouver"
+        },
+        "abbrev": "VAN",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/VAN_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/VAN_dark.svg"
+        },
+        "slug": "vancouver-canucks-23"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-col/2026/03/12/2025021040",
+      "gameDate": "2026-03-12",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 2.8919,
+        "metric": 4.6541
+      },
+      "toi": 1039.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Avalanche"
+        },
+        "placeNameWithPreposition": {
+          "default": "Colorado",
+          "fr": "du Colorado"
+        },
+        "abbrev": "COL",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/COL_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/COL_dark.svg"
+        },
+        "slug": "colorado-avalanche-21"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-nsh/2026/03/10/2025021024",
+      "gameDate": "2026-03-10",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 3.113,
+        "metric": 5.0099
+      },
+      "toi": 1078.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Predators"
+        },
+        "placeNameWithPreposition": {
+          "default": "Nashville",
+          "fr": "de Nashville"
+        },
+        "abbrev": "NSH",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/NSH_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/NSH_dark.svg"
+        },
+        "slug": "nashville-predators-18"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-ott/2026/03/07/2025021000",
+      "gameDate": "2026-03-07",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 3.0308,
+        "metric": 4.8776
+      },
+      "toi": 1066.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Senators",
+          "fr": "S\u00e9nateurs"
+        },
+        "placeNameWithPreposition": {
+          "default": "Ottawa",
+          "fr": "d'Ottawa"
+        },
+        "abbrev": "OTT",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/OTT_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/OTT_dark.svg"
+        },
+        "slug": "ottawa-senators-9"
+      }
+    },
+    {
+      "gameCenterLink": "/gamecenter/sea-vs-stl/2026/03/04/2025020974",
+      "gameDate": "2026-03-04",
+      "playerOnHomeTeam": true,
+      "distanceSkated": {
+        "imperial": 3.2758,
+        "metric": 5.2718
+      },
+      "toi": 1159.0,
+      "homeTeam": {
+        "commonName": {
+          "default": "Kraken"
+        },
+        "placeNameWithPreposition": {
+          "default": "Seattle",
+          "fr": "de Seattle"
+        },
+        "abbrev": "SEA",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/SEA_light.svg",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/SEA_dark.svg"
+        },
+        "slug": "seattle-kraken-55"
+      },
+      "awayTeam": {
+        "commonName": {
+          "default": "Blues"
+        },
+        "placeNameWithPreposition": {
+          "default": "St. Louis",
+          "fr": "de St. Louis"
+        },
+        "abbrev": "STL",
+        "teamLogo": {
+          "light": "https://assets.nhle.com/logos/nhl/svg/STL_light.svg?season=20252026",
+          "dark": "https://assets.nhle.com/logos/nhl/svg/STL_dark.svg?season=20252026"
+        },
+        "slug": "st-louis-blues-19"
+      }
+    }
+  ],
+  "skatingDistanceDetails": {
+    "distanceTotal": {
+      "imperial": 229.4885,
+      "metric": 369.3079
+    },
+    "distancePer60": {
+      "imperial": 10.16,
+      "metric": 16.3501
+    },
+    "distanceMaxGame": {
+      "imperial": 4.0517,
+      "metric": 6.5203,
+      "overlay": {
+        "player": {
+          "firstName": {
+            "default": "Matty"
+          },
+          "lastName": {
+            "default": "Beniers"
+          }
+        },
+        "gameDate": "2026-03-24",
+        "awayTeam": {
+          "abbrev": "SEA",
+          "score": 4
+        },
+        "homeTeam": {
+          "abbrev": "FLA",
+          "score": 5
+        },
+        "gameOutcome": {
+          "lastPeriodType": "SO"
+        },
+        "periodDescriptor": {
+          "maxRegulationPeriods": 3,
+          "number": 3,
+          "periodType": "REG"
+        },
+        "gameType": 2
+      }
+    },
+    "distanceMaxPeriod": {
+      "imperial": 1.5086,
+      "metric": 2.4278,
+      "overlay": {
+        "player": {
+          "firstName": {
+            "default": "Matty"
+          },
+          "lastName": {
+            "default": "Beniers"
+          }
+        },
+        "gameDate": "2025-11-26",
+        "awayTeam": {
+          "abbrev": "DAL",
+          "score": 3
+        },
+        "homeTeam": {
+          "abbrev": "SEA",
+          "score": 2
+        },
+        "gameOutcome": {
+          "lastPeriodType": "REG"
+        },
+        "periodDescriptor": {
+          "maxRegulationPeriods": 3,
+          "number": 3,
+          "periodType": "REG"
+        },
+        "gameType": 2
+      }
+    }
+  },
+  "shotLocationDetails": [
+    {
+      "area": "Behind the Net",
+      "sog": 0,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Beyond Red Line",
+      "sog": 1,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Center Point",
+      "sog": 3,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Crease",
+      "sog": 6,
+      "goals": 2,
+      "shootingPctg": 0.3333
+    },
+    {
+      "area": "High Slot",
+      "sog": 19,
+      "goals": 1,
+      "shootingPctg": 0.0526
+    },
+    {
+      "area": "L Circle",
+      "sog": 12,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "L Corner",
+      "sog": 0,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "L Net Side",
+      "sog": 5,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "L Point",
+      "sog": 0,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Low Slot",
+      "sog": 53,
+      "goals": 14,
+      "shootingPctg": 0.2642
+    },
+    {
+      "area": "Offensive Neutral Zone",
+      "sog": 0,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Outside L",
+      "sog": 4,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "Outside R",
+      "sog": 6,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "R Circle",
+      "sog": 14,
+      "goals": 1,
+      "shootingPctg": 0.0714
+    },
+    {
+      "area": "R Corner",
+      "sog": 0,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "area": "R Net Side",
+      "sog": 5,
+      "goals": 1,
+      "shootingPctg": 0.2
+    },
+    {
+      "area": "R Point",
+      "sog": 3,
+      "goals": 0,
+      "shootingPctg": 0.0
+    }
+  ],
+  "shotLocationTotals": [
+    {
+      "locationCode": "all",
+      "sog": 131,
+      "goals": 19,
+      "shootingPctg": 0.145
+    },
+    {
+      "locationCode": "high",
+      "sog": 59,
+      "goals": 16,
+      "shootingPctg": 0.2712
+    },
+    {
+      "locationCode": "high+long",
+      "sog": 65,
+      "goals": 16,
+      "shootingPctg": 0.2462
+    },
+    {
+      "locationCode": "high+mid",
+      "sog": 104,
+      "goals": 18,
+      "shootingPctg": 0.1731
+    },
+    {
+      "locationCode": "high+mid+long",
+      "sog": 110,
+      "goals": 18,
+      "shootingPctg": 0.1636
+    },
+    {
+      "locationCode": "long",
+      "sog": 6,
+      "goals": 0,
+      "shootingPctg": 0.0
+    },
+    {
+      "locationCode": "mid",
+      "sog": 45,
+      "goals": 2,
+      "shootingPctg": 0.0444
+    }
+  ],
+  "zoneTimeDetails": {
+    "offensiveZonePctg": 0.43958558,
+    "offensiveZoneLeagueAvg": 0.42397296,
+    "neutralZonePctg": 0.17450549,
+    "neutralZoneLeagueAvg": 0.1781081,
+    "defensiveZonePctg": 0.38590893,
+    "defensiveZoneLeagueAvg": 0.39791894
+  },
+  "zoneStarts": {
+    "offensiveZoneStarts": 0.3524,
+    "neutralZoneStarts": 0.326,
+    "defensiveZoneStarts": 0.3216
+  }
+}
