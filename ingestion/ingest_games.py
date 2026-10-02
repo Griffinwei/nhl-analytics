@@ -56,7 +56,7 @@ def ingest_games(season: int):
         connection.commit()
         
         # Collect all games across all teams to avoid duplicates
-        all_games = []
+        all_games = {}
         
         teams = [
             "ANA", "BOS", "BUF", "CGY", "CAR", "CHI", "COL", "CBJ", 
@@ -82,7 +82,7 @@ def ingest_games(season: int):
                         continue
                         
                     # Skip if we already processed this game
-                    if any(g['game_id'] == game_id for g in all_games):
+                    if game_id in all_games:
                         continue
                     
                     date = game.get("gameDate")
@@ -130,7 +130,7 @@ def ingest_games(season: int):
                     
                     # Only add if we have essential data
                     if game_id and date and home_team and away_team:
-                        all_games.append({
+                        all_games[game_id] = {
                             'game_id': game_id,
                             'season': season,
                             'date': date,
@@ -143,7 +143,7 @@ def ingest_games(season: int):
                             'overtime': overtime,
                             'shootout': shootout,
                             'completed': completed
-                        })
+                        }
                         
             except requests.RequestException as e:
                 print(f"Error fetching data for {team}: {e}")
@@ -158,6 +158,11 @@ def ingest_games(season: int):
                    :away_team, :away_score, :overtime, :shootout, :completed)
             ON CONFLICT (game_id) 
             DO UPDATE SET
+                date = EXCLUDED.date,
+                time = EXCLUDED.time,
+                location = EXCLUDED.location,
+                home_team = EXCLUDED.home_team,
+                away_team = EXCLUDED.away_team,
                 home_score = EXCLUDED.home_score,
                 away_score = EXCLUDED.away_score,
                 overtime = EXCLUDED.overtime,
@@ -166,7 +171,7 @@ def ingest_games(season: int):
                 updated_at = CURRENT_TIMESTAMP
             """
             
-            connection.execute(sa.text(insert_sql), all_games)
+            connection.execute(sa.text(insert_sql), list(all_games.values()))
             connection.commit()
             
             print(f"Successfully ingested {len(all_games)} games for season {season}")
