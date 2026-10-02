@@ -18,7 +18,8 @@ def current_season() -> int:
 
 
 def get_engine() -> sa.Engine:
-    return sa.create_engine(os.environ['DB_URL'])
+    # Batch executemany calls into pages instead of one round trip per row
+    return sa.create_engine(os.environ['DB_URL'], executemany_mode='values_plus_batch')
 
 
 FALLBACK_TEAMS = [
