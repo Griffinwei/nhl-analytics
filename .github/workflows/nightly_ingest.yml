@@ -1,0 +1,39 @@
+name: Nightly Ingest
+
+on:
+  schedule:
+    # GitHub cron is UTC and ignores DST: 06:00 UTC = 1am EST / 2am EDT, always after late games.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      season:
+        description: "Season to ingest (e.g. 20262027); blank = current season"
+        required: false
+        default: ""
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    env:
+      DB_URL: ${{ secrets.DB_URL }}
+      SEASON: ${{ github.event.inputs.season }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Ingest games
+        run: python ingestion/ingest_games.py
+
+      - name: Ingest play-by-play
+        run: python ingestion/ingest_play_by_play.py
+
+      - name: Ingest shifts
+        run: python ingestion/ingest_shifts.py
