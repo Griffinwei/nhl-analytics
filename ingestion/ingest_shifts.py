@@ -1,9 +1,6 @@
-import os
 import requests
 import sqlalchemy as sa
-from dotenv import load_dotenv
-
-load_dotenv()
+from common import current_season, get_engine
 
 # Ingests shift data using the NHL API and stores it in Neon Postgres
 
@@ -22,11 +19,9 @@ load_dotenv()
 # - detail_code: smallint          data[].detailCode
 # - event_number: int              data[].eventNumber
 
-DB_URL = os.getenv('DB_URL')
-
 
 def ingest_shifts(season: int):
-    engine = sa.create_engine(DB_URL)
+    engine = get_engine()
 
     create_table_sql = """
     CREATE TABLE IF NOT EXISTS shifts (
@@ -139,5 +134,4 @@ def ingest_shifts(season: int):
 
 
 if __name__ == "__main__":
-    season = int(os.getenv('SEASON', '20252026'))
-    ingest_shifts(season)
+    ingest_shifts(current_season())

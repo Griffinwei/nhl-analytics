@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       season:
-        description: "Season to ingest (e.g. 20252026)"
-        required: true
-        default: "20252026"
+        description: "Season to ingest (e.g. 20262027); blank = current season"
+        required: false
+        default: ""
 
 jobs:
   ingest:

@@ -1,12 +1,9 @@
 import math
-import os
 from typing import Optional
 from datetime import datetime
 import requests
 import sqlalchemy as sa
-from dotenv import load_dotenv
-
-load_dotenv()
+from common import current_season, get_engine
 
 # Ingests play-by-play data using the NHL API and stores it in Neon Postgres
 
@@ -60,8 +57,6 @@ load_dotenv()
 # --- missed-shot ---
 # - miss_reason: text                plays[].details.reason
 
-
-DB_URL = os.getenv('DB_URL')
 
 SHOT_EVENT_TYPES = {'shot-on-goal', 'goal', 'missed-shot'}
 
@@ -188,7 +183,7 @@ def parse_play(play: dict, game_id: int, home_team_id: int) -> dict:
 
 
 def ingest_play_by_play(season: int):
-    engine = sa.create_engine(DB_URL)
+    engine = get_engine()
 
     create_table_sql = """
     CREATE TABLE IF NOT EXISTS play_by_play (
@@ -364,5 +359,4 @@ def ingest_play_by_play(season: int):
 
 
 if __name__ == "__main__":
-    season = int(os.getenv('SEASON', '20252026'))
-    ingest_play_by_play(season)
+    ingest_play_by_play(current_season())

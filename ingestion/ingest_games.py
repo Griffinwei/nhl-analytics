@@ -1,11 +1,8 @@
 import json
-import os
 from datetime import datetime, timedelta
 import requests
 import sqlalchemy as sa
-from dotenv import load_dotenv
-
-load_dotenv()
+from common import current_season, get_engine
 
 # Ingests game data using the NHL API and stores it in Neon Postgres
 
@@ -25,7 +22,7 @@ load_dotenv()
 
 def ingest_games(season: int):
     # Connect to Neon Postgres
-    engine = sa.create_engine(os.getenv('DB_URL'))
+    engine = get_engine()
     
     # Create table if it doesn't exist
     create_table_sql = """
@@ -177,4 +174,4 @@ def ingest_games(season: int):
             print(f"No games found for season {season}")
 
 if __name__ == "__main__":
-    ingest_games(20252026)
+    ingest_games(current_season())
