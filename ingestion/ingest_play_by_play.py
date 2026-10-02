@@ -1,4 +1,6 @@
 import math
+import os
+import time
 from typing import Optional
 from datetime import datetime
 import requests
@@ -317,19 +319,24 @@ def ingest_play_by_play(season: int):
         conn.commit()
 
         # Fetch completed game IDs for the season from the games table
+        # Only fetch games not yet loaded unless FULL_REFRESH=1
+        query = "SELECT game_id FROM games WHERE season = :season AND completed = TRUE"
+        if os.getenv('FULL_REFRESH') != '1':
+            query += " AND NOT EXISTS (SELECT 1 FROM play_by_play t WHERE t.game_id = games.game_id)"
         result = conn.execute(
-            sa.text("SELECT game_id FROM games WHERE season = :season AND completed = TRUE"),
+            sa.text(query),
             {'season': season}
         )
         game_ids = [row[0] for row in result]
 
     if not game_ids:
-        print(f"No completed games found for season {season}")
+        print(f"No new completed games for season {season}")
         return
 
     total_plays = 0
 
     for game_id in game_ids:
+        time.sleep(0.5)  # be polite to the API
         try:
             response = requests.get(
                 f"https://api-web.nhle.com/v1/gamecenter/{game_id}/play-by-play"

@@ -1,3 +1,5 @@
+import os
+import time
 import requests
 import sqlalchemy as sa
 from common import current_season, get_engine
@@ -77,19 +79,24 @@ def ingest_shifts(season: int):
         conn.execute(sa.text(create_table_sql))
         conn.commit()
 
+        # Only fetch games not yet loaded unless FULL_REFRESH=1
+        query = "SELECT game_id FROM games WHERE season = :season AND completed = TRUE"
+        if os.getenv('FULL_REFRESH') != '1':
+            query += " AND NOT EXISTS (SELECT 1 FROM shifts t WHERE t.game_id = games.game_id)"
         result = conn.execute(
-            sa.text("SELECT game_id FROM games WHERE season = :season AND completed = TRUE"),
+            sa.text(query),
             {'season': season}
         )
         game_ids = [row[0] for row in result]
 
     if not game_ids:
-        print(f"No completed games found for season {season}")
+        print(f"No new completed games for season {season}")
         return
 
     total_shifts = 0
 
     for game_id in game_ids:
+        time.sleep(0.5)  # be polite to the API
         try:
             response = requests.get(
                 f"https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId={game_id}"
