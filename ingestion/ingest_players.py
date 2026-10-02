@@ -1,10 +1,7 @@
-import os
 from datetime import datetime, timedelta
 import requests
 import sqlalchemy as sa
-from dotenv import load_dotenv
-
-load_dotenv()
+from common import get_engine, get_teams
 
 # Ingests player data using the NHL API and stores it in Neon Postgres
 
@@ -20,7 +17,7 @@ load_dotenv()
 
 def ingest_players():
     # Connect to Neon Postgres
-    engine = sa.create_engine(os.getenv('DB_URL'))
+    engine = get_engine()
 
     # Create table if it doesn't exist
     create_table_sql = """
@@ -44,14 +41,7 @@ def ingest_players():
     # Collect all players across all teams to avoid duplicates
     all_players = []
 
-    teams = [
-        "ANA", "BOS", "BUF", "CGY", "CAR", "CHI", "COL", "CBJ", 
-        "DAL", "DET", "EDM", "FLA", "LAK", "MIN", "MTL", "NSH", 
-        "NJD", "NYI", "NYR", "OTT", "PHI", "PIT", "SJS", "SEA", 
-        "STL", "TBL", "TOR", "UTA", "VAN", "VGK", "WSH", "WPG"
-    ]
-
-    for team in teams:
+    for team in get_teams():
         try:
             response = requests.get(f"https://api-web.nhle.com/v1/roster/{team}/current")
             response.raise_for_status()

@@ -2,7 +2,7 @@ import json
 from datetime import datetime, timedelta
 import requests
 import sqlalchemy as sa
-from common import current_season, get_engine
+from common import current_season, get_engine, get_teams
 
 # Ingests game data using the NHL API and stores it in Neon Postgres
 
@@ -58,14 +58,7 @@ def ingest_games(season: int):
         # Collect all games across all teams to avoid duplicates
         all_games = {}
         
-        teams = [
-            "ANA", "BOS", "BUF", "CGY", "CAR", "CHI", "COL", "CBJ", 
-            "DAL", "DET", "EDM", "FLA", "LAK", "MIN", "MTL", "NSH", 
-            "NJD", "NYI", "NYR", "OTT", "PHI", "PIT", "SJS", "SEA", 
-            "STL", "TBL", "TOR", "UTA", "VAN", "VGK", "WSH", "WPG"
-        ]
-        
-        for team in teams:
+        for team in get_teams():
             try:
                 response = requests.get(f"https://api-web.nhle.com/v1/club-schedule-season/{team}/{season}")
                 response.raise_for_status()
