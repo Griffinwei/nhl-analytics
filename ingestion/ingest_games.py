@@ -2,7 +2,7 @@ import json
 from datetime import datetime, timedelta
 import requests
 import sqlalchemy as sa
-from common import current_season, get_engine, get_teams
+from common import current_season, ensure_schema, get_engine, get_teams
 
 # Ingests game data using the NHL API and stores it in Neon Postgres
 
@@ -23,38 +23,9 @@ from common import current_season, get_engine, get_teams
 def ingest_games(season: int):
     # Connect to Neon Postgres
     engine = get_engine()
-    
-    # Create table if it doesn't exist
-    create_table_sql = """
-    CREATE TABLE IF NOT EXISTS games (
-        game_id INTEGER PRIMARY KEY,
-        season INTEGER NOT NULL,
-        date DATE NOT NULL,
-        time TIME,
-        location TEXT,
-        home_team VARCHAR(3) NOT NULL,
-        home_score SMALLINT,
-        away_team VARCHAR(3) NOT NULL,
-        away_score SMALLINT,
-        overtime BOOLEAN,
-        shootout BOOLEAN,
-        completed BOOLEAN NOT NULL DEFAULT FALSE,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-    
-    -- Add updated_at column if it doesn't exist (for existing tables)
-    ALTER TABLE games ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
-    
-    -- Create index for common queries
-    CREATE INDEX IF NOT EXISTS idx_games_season_date ON games(season, date);
-    CREATE INDEX IF NOT EXISTS idx_games_completed ON games(completed);
-    """
+    ensure_schema(engine)
     
     with engine.connect() as connection:
-        connection.execute(sa.text(create_table_sql))
-        connection.commit()
-        
         # Collect all games across all teams to avoid duplicates
         all_games = {}
         

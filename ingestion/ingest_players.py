@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import requests
 import sqlalchemy as sa
-from common import get_engine, get_teams
+from common import ensure_schema, get_engine, get_teams
 
 # Ingests player data using the NHL API and stores it in Neon Postgres
 
@@ -18,26 +18,7 @@ from common import get_engine, get_teams
 def ingest_players():
     # Connect to Neon Postgres
     engine = get_engine()
-
-    # Create table if it doesn't exist
-    create_table_sql = """
-    CREATE TABLE IF NOT EXISTS players (
-        player_id INTEGER PRIMARY KEY,
-        first_name TEXT NOT NULL,
-        last_name TEXT NOT NULL,
-        position VARCHAR(10),
-        team VARCHAR(3),
-        birth_date DATE,
-        jersey_number SMALLINT,
-        shoots VARCHAR(5),
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-    """
-    with engine.connect() as connection:
-        connection.execute(sa.text(create_table_sql))
-        connection.commit()
-
+    ensure_schema(engine)
     # Collect all players across all teams to avoid duplicates
     all_players = []
 

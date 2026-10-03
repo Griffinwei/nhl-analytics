@@ -2,7 +2,7 @@ import os
 import time
 import requests
 import sqlalchemy as sa
-from common import current_season, get_engine
+from common import current_season, ensure_schema, get_engine
 
 # Ingests shift data using the NHL API and stores it in Neon Postgres
 
@@ -24,30 +24,7 @@ from common import current_season, get_engine
 
 def ingest_shifts(season: int):
     engine = get_engine()
-
-    create_table_sql = """
-    CREATE TABLE IF NOT EXISTS shifts (
-        shift_id INTEGER PRIMARY KEY,
-        game_id INTEGER NOT NULL,
-        player_id INTEGER NOT NULL,
-        period SMALLINT NOT NULL,
-        shift_number SMALLINT,
-        start_time TEXT NOT NULL,
-        end_time TEXT NOT NULL,
-        duration TEXT,
-        team_id INTEGER,
-        team_abbrev VARCHAR(3),
-        type_code SMALLINT,
-        detail_code SMALLINT,
-        event_number INTEGER,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_shifts_game_id ON shifts(game_id);
-    CREATE INDEX IF NOT EXISTS idx_shifts_player_id ON shifts(player_id);
-    CREATE INDEX IF NOT EXISTS idx_shifts_period ON shifts(game_id, period);
-    """
+    ensure_schema(engine)
 
     upsert_sql = """
     INSERT INTO shifts (
@@ -76,9 +53,6 @@ def ingest_shifts(season: int):
     """
 
     with engine.connect() as conn:
-        conn.execute(sa.text(create_table_sql))
-        conn.commit()
-
         # Only fetch games not yet loaded unless FULL_REFRESH=1
         query = "SELECT game_id FROM games WHERE season = :season AND completed = TRUE"
         if os.getenv('FULL_REFRESH') != '1':

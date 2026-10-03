@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from typing import Optional
 import requests
 import sqlalchemy as sa
-from common import get_engine
+from common import ensure_schema, get_engine
 
 # Ingests pre-game betting lines from the NHL partner odds endpoint and stores them in Neon Postgres.
 # One row per game per sportsbook per capture, so opening and closing lines are both retained.
@@ -31,22 +31,7 @@ def find_odds(team: dict, description: str) -> Optional[dict]:
 
 def ingest_betting_lines():
     engine = get_engine()
-
-    create_table_sql = """
-    CREATE TABLE IF NOT EXISTS betting_lines (
-        game_id INTEGER NOT NULL,
-        sportsbook TEXT NOT NULL,
-        home_moneyline SMALLINT,
-        away_moneyline SMALLINT,
-        home_implied_prob NUMERIC(5, 4),
-        away_implied_prob NUMERIC(5, 4),
-        home_fair_prob NUMERIC(5, 4),
-        away_fair_prob NUMERIC(5, 4),
-        over_under NUMERIC(3, 1),
-        captured_at TIMESTAMPTZ NOT NULL,
-        PRIMARY KEY (game_id, sportsbook, captured_at)
-    );
-    """
+    ensure_schema(engine)
 
     insert_sql = """
     INSERT INTO betting_lines (
@@ -98,11 +83,10 @@ def ingest_betting_lines():
             'captured_at': captured_at,
         })
 
-    with engine.connect() as conn:
-        conn.execute(sa.text(create_table_sql))
-        if rows:
+    if rows:
+        with engine.connect() as conn:
             conn.execute(sa.text(insert_sql), rows)
-        conn.commit()
+            conn.commit()
 
     print(f"Ingested {len(rows)} {sportsbook} lines captured at {captured_at}")
 

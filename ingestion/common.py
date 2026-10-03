@@ -1,5 +1,6 @@
 import os
 from datetime import date
+from pathlib import Path
 
 import requests
 import sqlalchemy as sa
@@ -19,7 +20,13 @@ def current_season() -> int:
 
 def get_engine() -> sa.Engine:
     # Batch executemany calls into pages instead of one round trip per row
-    return sa.create_engine(os.environ['DB_URL'], executemany_mode='values_plus_batch')
+    return sa.create_engine(os.environ['DB_URL'], executemany_mode='values_plus_batch', pool_pre_ping=True)
+
+
+def ensure_schema(engine: sa.Engine) -> None:
+    """Apply sql/schema.sql (idempotent CREATE ... IF NOT EXISTS statements)."""
+    with engine.begin() as conn:
+        conn.exec_driver_sql((Path(__file__).parent.parent / 'sql' / 'schema.sql').read_text())
 
 
 FALLBACK_TEAMS = [
