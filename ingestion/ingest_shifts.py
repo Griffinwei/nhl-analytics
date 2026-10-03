@@ -1,9 +1,8 @@
 import os
+import time
 import requests
 import sqlalchemy as sa
-from dotenv import load_dotenv
-
-load_dotenv()
+from common import current_season, ensure_schema, get_engine
 
 # Ingests shift data using the NHL API and stores it in Neon Postgres
 
@@ -22,35 +21,10 @@ load_dotenv()
 # - detail_code: smallint          data[].detailCode
 # - event_number: int              data[].eventNumber
 
-DB_URL = os.getenv('DB_URL')
-
 
 def ingest_shifts(season: int):
-    engine = sa.create_engine(DB_URL)
-
-    create_table_sql = """
-    CREATE TABLE IF NOT EXISTS shifts (
-        shift_id INTEGER PRIMARY KEY,
-        game_id INTEGER NOT NULL,
-        player_id INTEGER NOT NULL,
-        period SMALLINT NOT NULL,
-        shift_number SMALLINT,
-        start_time TEXT NOT NULL,
-        end_time TEXT NOT NULL,
-        duration TEXT,
-        team_id INTEGER,
-        team_abbrev VARCHAR(3),
-        type_code SMALLINT,
-        detail_code SMALLINT,
-        event_number INTEGER,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_shifts_game_id ON shifts(game_id);
-    CREATE INDEX IF NOT EXISTS idx_shifts_player_id ON shifts(player_id);
-    CREATE INDEX IF NOT EXISTS idx_shifts_period ON shifts(game_id, period);
-    """
+    engine = get_engine()
+    ensure_schema(engine)
 
     upsert_sql = """
     INSERT INTO shifts (
@@ -79,22 +53,24 @@ def ingest_shifts(season: int):
     """
 
     with engine.connect() as conn:
-        conn.execute(sa.text(create_table_sql))
-        conn.commit()
-
+        # Only fetch games not yet loaded unless FULL_REFRESH=1
+        query = "SELECT game_id FROM games WHERE season = :season AND completed = TRUE"
+        if os.getenv('FULL_REFRESH') != '1':
+            query += " AND NOT EXISTS (SELECT 1 FROM shifts t WHERE t.game_id = games.game_id)"
         result = conn.execute(
-            sa.text("SELECT game_id FROM games WHERE season = :season AND completed = TRUE"),
+            sa.text(query),
             {'season': season}
         )
         game_ids = [row[0] for row in result]
 
     if not game_ids:
-        print(f"No completed games found for season {season}")
+        print(f"No new completed games for season {season}")
         return
 
     total_shifts = 0
 
     for game_id in game_ids:
+        time.sleep(0.5)  # be polite to the API
         try:
             response = requests.get(
                 f"https://api.nhle.com/stats/rest/en/shiftcharts?cayenneExp=gameId={game_id}"
@@ -139,5 +115,4 @@ def ingest_shifts(season: int):
 
 
 if __name__ == "__main__":
-    season = int(os.getenv('SEASON', '20252026'))
-    ingest_shifts(season)
+    ingest_shifts(current_season())

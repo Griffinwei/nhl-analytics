@@ -1,0 +1,30 @@
+name: Betting Lines
+
+on:
+  schedule:
+    # UTC. Morning pull for opening lines, then pre-game pulls before matinees and evening games.
+    # Scheduled runs can start late under load, so these leave a buffer before puck drop.
+    - cron: "0 14 * * *"
+    - cron: "30 16 * * *"
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Ingest betting lines
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+        run: python ingestion/ingest_betting_lines.py

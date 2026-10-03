@@ -1,12 +1,9 @@
-name: Ingest Shifts
+name: Weekly Players
 
 on:
+  schedule:
+    - cron: "0 7 * * 1"  # Mondays 07:00 UTC
   workflow_dispatch:
-    inputs:
-      season:
-        description: "Season to ingest (e.g. 20262027); blank = current season"
-        required: false
-        default: ""
 
 jobs:
   ingest:
@@ -18,12 +15,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
 
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run ingestion
+      - name: Ingest players
         env:
           DB_URL: ${{ secrets.DB_URL }}
-          SEASON: ${{ github.event.inputs.season }}
-        run: python ingestion/ingest_shifts.py
+        run: python ingestion/ingest_players.py

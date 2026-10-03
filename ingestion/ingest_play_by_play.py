@@ -1,12 +1,11 @@
 import math
 import os
+import time
 from typing import Optional
 from datetime import datetime
 import requests
 import sqlalchemy as sa
-from dotenv import load_dotenv
-
-load_dotenv()
+from common import current_season, ensure_schema, get_engine
 
 # Ingests play-by-play data using the NHL API and stores it in Neon Postgres
 
@@ -60,8 +59,6 @@ load_dotenv()
 # --- missed-shot ---
 # - miss_reason: text                plays[].details.reason
 
-
-DB_URL = os.getenv('DB_URL')
 
 SHOT_EVENT_TYPES = {'shot-on-goal', 'goal', 'missed-shot'}
 
@@ -188,60 +185,8 @@ def parse_play(play: dict, game_id: int, home_team_id: int) -> dict:
 
 
 def ingest_play_by_play(season: int):
-    engine = sa.create_engine(DB_URL)
-
-    create_table_sql = """
-    CREATE TABLE IF NOT EXISTS play_by_play (
-        event_id INTEGER NOT NULL,
-        game_id INTEGER NOT NULL,
-        sort_order INTEGER,
-        period SMALLINT NOT NULL,
-        period_type TEXT,
-        time_in_period TEXT NOT NULL,
-        time_remaining TEXT,
-        event_type TEXT NOT NULL,
-        type_code SMALLINT,
-        situation_code VARCHAR(4),
-        strength TEXT,
-        home_team_defending_side TEXT,
-        x_coord SMALLINT,
-        y_coord SMALLINT,
-        zone CHAR(1),
-        event_owner_team_id INTEGER,
-        distance SMALLINT,
-        winning_player_id INTEGER,
-        losing_player_id INTEGER,
-        hitting_player_id INTEGER,
-        hittee_player_id INTEGER,
-        shooting_player_id INTEGER,
-        shot_type TEXT,
-        goalie_in_net_id INTEGER,
-        away_sog SMALLINT,
-        home_sog SMALLINT,
-        scoring_player_id INTEGER,
-        scoring_player_total SMALLINT,
-        assist1_player_id INTEGER,
-        assist1_player_total SMALLINT,
-        assist2_player_id INTEGER,
-        assist2_player_total SMALLINT,
-        away_score SMALLINT,
-        home_score SMALLINT,
-        blocking_player_id INTEGER,
-        block_reason TEXT,
-        player_id INTEGER,
-        stoppage_reason TEXT,
-        stoppage_secondary_reason TEXT,
-        miss_reason TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (game_id, event_id)
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_pbp_game_id ON play_by_play(game_id);
-    CREATE INDEX IF NOT EXISTS idx_pbp_event_type ON play_by_play(event_type);
-    CREATE INDEX IF NOT EXISTS idx_pbp_shooting_player ON play_by_play(shooting_player_id);
-    CREATE INDEX IF NOT EXISTS idx_pbp_scoring_player ON play_by_play(scoring_player_id);
-    """
+    engine = get_engine()
+    ensure_schema(engine)
 
     upsert_sql = """
     INSERT INTO play_by_play (
@@ -318,23 +263,25 @@ def ingest_play_by_play(season: int):
     """
 
     with engine.connect() as conn:
-        conn.execute(sa.text(create_table_sql))
-        conn.commit()
-
         # Fetch completed game IDs for the season from the games table
+        # Only fetch games not yet loaded unless FULL_REFRESH=1
+        query = "SELECT game_id FROM games WHERE season = :season AND completed = TRUE"
+        if os.getenv('FULL_REFRESH') != '1':
+            query += " AND NOT EXISTS (SELECT 1 FROM play_by_play t WHERE t.game_id = games.game_id)"
         result = conn.execute(
-            sa.text("SELECT game_id FROM games WHERE season = :season AND completed = TRUE"),
+            sa.text(query),
             {'season': season}
         )
         game_ids = [row[0] for row in result]
 
     if not game_ids:
-        print(f"No completed games found for season {season}")
+        print(f"No new completed games for season {season}")
         return
 
     total_plays = 0
 
     for game_id in game_ids:
+        time.sleep(0.5)  # be polite to the API
         try:
             response = requests.get(
                 f"https://api-web.nhle.com/v1/gamecenter/{game_id}/play-by-play"
@@ -364,5 +311,4 @@ def ingest_play_by_play(season: int):
 
 
 if __name__ == "__main__":
-    season = int(os.getenv('SEASON', '20252026'))
-    ingest_play_by_play(season)
+    ingest_play_by_play(current_season())

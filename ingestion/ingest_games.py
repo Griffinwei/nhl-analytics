@@ -1,11 +1,8 @@
 import json
-import os
 from datetime import datetime, timedelta
 import requests
 import sqlalchemy as sa
-from dotenv import load_dotenv
-
-load_dotenv()
+from common import current_season, ensure_schema, get_engine, get_teams
 
 # Ingests game data using the NHL API and stores it in Neon Postgres
 
@@ -25,50 +22,14 @@ load_dotenv()
 
 def ingest_games(season: int):
     # Connect to Neon Postgres
-    engine = sa.create_engine(os.getenv('DB_URL'))
-    
-    # Create table if it doesn't exist
-    create_table_sql = """
-    CREATE TABLE IF NOT EXISTS games (
-        game_id INTEGER PRIMARY KEY,
-        season INTEGER NOT NULL,
-        date DATE NOT NULL,
-        time TIME,
-        location TEXT,
-        home_team VARCHAR(3) NOT NULL,
-        home_score SMALLINT,
-        away_team VARCHAR(3) NOT NULL,
-        away_score SMALLINT,
-        overtime BOOLEAN,
-        shootout BOOLEAN,
-        completed BOOLEAN NOT NULL DEFAULT FALSE,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-    
-    -- Add updated_at column if it doesn't exist (for existing tables)
-    ALTER TABLE games ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
-    
-    -- Create index for common queries
-    CREATE INDEX IF NOT EXISTS idx_games_season_date ON games(season, date);
-    CREATE INDEX IF NOT EXISTS idx_games_completed ON games(completed);
-    """
+    engine = get_engine()
+    ensure_schema(engine)
     
     with engine.connect() as connection:
-        connection.execute(sa.text(create_table_sql))
-        connection.commit()
-        
         # Collect all games across all teams to avoid duplicates
-        all_games = []
+        all_games = {}
         
-        teams = [
-            "ANA", "BOS", "BUF", "CGY", "CAR", "CHI", "COL", "CBJ", 
-            "DAL", "DET", "EDM", "FLA", "LAK", "MIN", "MTL", "NSH", 
-            "NJD", "NYI", "NYR", "OTT", "PHI", "PIT", "SJS", "SEA", 
-            "STL", "TBL", "TOR", "UTA", "VAN", "VGK", "WSH", "WPG"
-        ]
-        
-        for team in teams:
+        for team in get_teams():
             try:
                 response = requests.get(f"https://api-web.nhle.com/v1/club-schedule-season/{team}/{season}")
                 response.raise_for_status()
@@ -85,7 +46,7 @@ def ingest_games(season: int):
                         continue
                         
                     # Skip if we already processed this game
-                    if any(g['game_id'] == game_id for g in all_games):
+                    if game_id in all_games:
                         continue
                     
                     date = game.get("gameDate")
@@ -133,7 +94,7 @@ def ingest_games(season: int):
                     
                     # Only add if we have essential data
                     if game_id and date and home_team and away_team:
-                        all_games.append({
+                        all_games[game_id] = {
                             'game_id': game_id,
                             'season': season,
                             'date': date,
@@ -146,7 +107,7 @@ def ingest_games(season: int):
                             'overtime': overtime,
                             'shootout': shootout,
                             'completed': completed
-                        })
+                        }
                         
             except requests.RequestException as e:
                 print(f"Error fetching data for {team}: {e}")
@@ -161,6 +122,11 @@ def ingest_games(season: int):
                    :away_team, :away_score, :overtime, :shootout, :completed)
             ON CONFLICT (game_id) 
             DO UPDATE SET
+                date = EXCLUDED.date,
+                time = EXCLUDED.time,
+                location = EXCLUDED.location,
+                home_team = EXCLUDED.home_team,
+                away_team = EXCLUDED.away_team,
                 home_score = EXCLUDED.home_score,
                 away_score = EXCLUDED.away_score,
                 overtime = EXCLUDED.overtime,
@@ -169,7 +135,7 @@ def ingest_games(season: int):
                 updated_at = CURRENT_TIMESTAMP
             """
             
-            connection.execute(sa.text(insert_sql), all_games)
+            connection.execute(sa.text(insert_sql), list(all_games.values()))
             connection.commit()
             
             print(f"Successfully ingested {len(all_games)} games for season {season}")
@@ -177,4 +143,4 @@ def ingest_games(season: int):
             print(f"No games found for season {season}")
 
 if __name__ == "__main__":
-    ingest_games(20252026)
+    ingest_games(current_season())
