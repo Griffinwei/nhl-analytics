@@ -1,12 +1,4 @@
-import math
-import os
-from typing import Optional
-from datetime import datetime
-import requests
-import sqlalchemy as sa
-from dotenv import load_dotenv
-
-load_dotenv()
+from common import current_season, ensure_schema, get_engine
 
 # Ingests edge stats data using the NHL API and stores it in Neon Postgres
 
