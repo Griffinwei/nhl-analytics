@@ -32,6 +32,9 @@ CREATE TABLE IF NOT EXISTS games (
 );
 
 ALTER TABLE games ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+-- Numeric team IDs, matching play_by_play.event_owner_team_id
+ALTER TABLE games ADD COLUMN IF NOT EXISTS home_team_id INTEGER;
+ALTER TABLE games ADD COLUMN IF NOT EXISTS away_team_id INTEGER;
 
 CREATE TABLE IF NOT EXISTS play_by_play (
     event_id INTEGER NOT NULL,
