@@ -19,7 +19,8 @@ def load_shots() -> pd.DataFrame:
         CACHE.parent.mkdir(exist_ok=True)
         with get_engine().connect() as conn:
             pd.read_sql(sa.text(SQL), conn, params={'seasons': SEASONS}).to_parquet(CACHE)
-    return add_features(pd.read_parquet(CACHE))
+    # Sort on the primary key: tables have no inherent row order, and XGBoost fits shift slightly with it
+    return add_features(pd.read_parquet(CACHE).sort_values(['game_id', 'event_id'], ignore_index=True))
 
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
