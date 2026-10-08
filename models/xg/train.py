@@ -60,7 +60,8 @@ def build_model(kind: str, features: dict):
     }
     return make_pipeline(
         ColumnTransformer([(group, transformers[group], cols) for group, cols in features.items()]),
-        LogisticRegression(max_iter=1000) if kind == 'logistic' else
+        # The default tol stops short of the optimum (overlapping spline knots make the fit ill-conditioned)
+        LogisticRegression(tol=1e-7, max_iter=5000) if kind == 'logistic' else
         XGBClassifier(n_estimators=2000, learning_rate=0.05, max_depth=4, early_stopping_rounds=50, eval_metric='logloss'),
     )
 
