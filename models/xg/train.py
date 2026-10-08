@@ -6,8 +6,12 @@
 """
 import sys
 
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 import mlflow
 import numpy as np
+from sklearn.calibration import CalibrationDisplay
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
@@ -17,6 +21,7 @@ from sklearn.preprocessing import SplineTransformer
 from models.xg.features import load_shots
 
 TRAIN, VAL, TEST = 20242025, 20252026, 20262027
+COLORS = {'val': '#2a78d6', 'test': '#eb6834'}
 
 EXPERIMENTS = {
     '1-location': {'spline': ['distance', 'angle']},
@@ -46,12 +51,20 @@ def run(name: str, features: dict, shots):
     model = build_model(features).fit(split['train'][cols], split['train'].is_goal)
     base_rate = split['train'].is_goal.mean()
 
+    fig, ax = plt.subplots(figsize=(6, 6))
     with mlflow.start_run(run_name=name):
         mlflow.log_params({'features': cols, 'train': TRAIN, 'val': VAL, 'test': TEST})
         for k, df in split.items():
-            metrics = evaluate(df.is_goal, model.predict_proba(df[cols])[:, 1], base_rate)
+            p = model.predict_proba(df[cols])[:, 1]
+            metrics = evaluate(df.is_goal, p, base_rate)
             mlflow.log_metrics({f'{k}_{m}': v for m, v in metrics.items()})
             print(f"{name:24s} {k:5s} " + '  '.join(f'{m} {v:.5f}' for m, v in metrics.items()))
+            if k != 'train':
+                CalibrationDisplay.from_predictions(df.is_goal, p, n_bins=20, strategy='quantile', name=f'{k} {df.season.iloc[0]}', ax=ax,
+                                                    color=COLORS[k])
+        ax.set(xlim=(0, 0.5), ylim=(0, 0.5), xlabel='Mean predicted xG (20 quantile bins)', ylabel='Observed goal rate', title=name)
+        mlflow.log_figure(fig, 'calibration.png')
+        plt.close(fig)
         mlflow.sklearn.log_model(model, name='model', serialization_format='cloudpickle')
 
 
