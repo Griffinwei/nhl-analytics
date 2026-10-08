@@ -13,6 +13,7 @@ import mlflow
 import numpy as np
 from sklearn.calibration import CalibrationDisplay
 from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 from sklearn.pipeline import make_pipeline
@@ -35,19 +36,24 @@ TIME_BETWEEN_SHOTS = {
     'numeric': GAME_STATE['numeric'] + ['rebound_dy'],
     'categorical': GAME_STATE['categorical'],
 }
+SHIFT_LENGTH = {**TIME_BETWEEN_SHOTS, 'spline': TIME_BETWEEN_SHOTS['spline'] + ['off_mean_shift', 'def_mean_shift']}
 
 EXPERIMENTS = {
     '1-location': ('logistic', LOCATION),
     '2-game-state': ('logistic', GAME_STATE),
     '4-xgboost': ('xgboost', GAME_STATE),
     '5-time-between-shots': ('logistic', TIME_BETWEEN_SHOTS),
+    '6-shift-length': ('logistic', SHIFT_LENGTH),
+    '7-xgboost-all': ('xgboost', SHIFT_LENGTH),
 }
 
 
 def build_model(kind: str, features: dict):
     transformers = {
-        # Trees find their own non-linearities, so XGBoost gets the raw values
-        'spline': SplineTransformer(n_knots=8, knots='quantile', extrapolation='constant') if kind == 'logistic' else 'passthrough',
+        # Trees find their own non-linearities and handle missing values, so XGBoost gets the raw values.
+        # The imputer fills shift features for games with no shift data.
+        'spline': make_pipeline(SimpleImputer(strategy='median'), SplineTransformer(n_knots=8, knots='quantile', extrapolation='constant'))
+                  if kind == 'logistic' else 'passthrough',
         'numeric': StandardScaler(),
         # Shot types seen fewer than 100 times in training (between-legs, cradle, new ones) share one column
         'categorical': OneHotEncoder(handle_unknown='infrequent_if_exist', min_frequency=100),
