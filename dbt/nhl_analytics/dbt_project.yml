@@ -35,3 +35,7 @@ models:
     staging:      {+materialized: view}
     intermediate: {+materialized: table}
     marts:        {+materialized: table}
+
+vars:
+  # MLflow registry version of model 'xg' whose predictions the marts read (see models/xg/score.py)
+  xg_model_version: '1'
