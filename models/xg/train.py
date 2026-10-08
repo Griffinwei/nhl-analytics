@@ -17,32 +17,39 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder, SplineTransformer, StandardScaler
+from xgboost import XGBClassifier
 
 from models.xg.features import load_shots
 
 TRAIN, VAL, TEST = 20242025, 20252026, 20262027
 COLORS = {'val': '#2a78d6', 'test': '#eb6834'}
 
+LOCATION = {'spline': ['distance', 'angle']}
+GAME_STATE = {
+    **LOCATION,
+    'numeric': ['empty_net', 'empty_net_distance', 'shooter_skaters', 'defender_skaters'],
+    'categorical': ['shot_type', 'strength'],
+}
+
 EXPERIMENTS = {
-    '1-location': {'spline': ['distance', 'angle']},
-    '2-game-state': {
-        'spline': ['distance', 'angle'],
-        'numeric': ['empty_net', 'empty_net_distance', 'shooter_skaters', 'defender_skaters'],
-        'categorical': ['shot_type', 'strength'],
-    },
+    '1-location': ('logistic', LOCATION),
+    '2-game-state': ('logistic', GAME_STATE),
+    '4-xgboost': ('xgboost', GAME_STATE),
 }
 
 
-def build_model(features: dict):
+def build_model(kind: str, features: dict):
     transformers = {
-        'spline': SplineTransformer(n_knots=8, knots='quantile', extrapolation='constant'),
+        # Trees find their own non-linearities, so XGBoost gets the raw values
+        'spline': SplineTransformer(n_knots=8, knots='quantile', extrapolation='constant') if kind == 'logistic' else 'passthrough',
         'numeric': StandardScaler(),
         # Shot types seen fewer than 100 times in training (between-legs, cradle, new ones) share one column
         'categorical': OneHotEncoder(handle_unknown='infrequent_if_exist', min_frequency=100),
     }
     return make_pipeline(
         ColumnTransformer([(group, transformers[group], cols) for group, cols in features.items()]),
-        LogisticRegression(max_iter=1000),
+        LogisticRegression(max_iter=1000) if kind == 'logistic' else
+        XGBClassifier(n_estimators=2000, learning_rate=0.05, max_depth=4, early_stopping_rounds=50, eval_metric='logloss'),
     )
 
 
@@ -56,15 +63,22 @@ def evaluate(y, p, base_rate) -> dict:
     }
 
 
-def run(name: str, features: dict, shots):
+def run(name: str, kind: str, features: dict, shots):
     cols = [c for group in features.values() for c in group]
     split = {k: shots[shots.season == s] for k, s in (('train', TRAIN), ('val', VAL), ('test', TEST))}
-    model = build_model(features).fit(split['train'][cols], split['train'].is_goal)
+    model = build_model(kind, features)
+    if kind == 'xgboost':
+        # Early stopping needs the validation season already run through the fitted preprocessing step
+        prep, xgb = model[0], model[-1]
+        X_train = prep.fit_transform(split['train'][cols])
+        xgb.fit(X_train, split['train'].is_goal, eval_set=[(prep.transform(split['val'][cols]), split['val'].is_goal)], verbose=False)
+    else:
+        model.fit(split['train'][cols], split['train'].is_goal)
     base_rate = split['train'].is_goal.mean()
 
     fig, ax = plt.subplots(figsize=(6, 6))
     with mlflow.start_run(run_name=name):
-        mlflow.log_params({'features': cols, 'train': TRAIN, 'val': VAL, 'test': TEST})
+        mlflow.log_params({'model': kind, 'features': cols, 'train': TRAIN, 'val': VAL, 'test': TEST})
         for k, df in split.items():
             p = model.predict_proba(df[cols])[:, 1]
             metrics = evaluate(df.is_goal, p, base_rate)
@@ -84,4 +98,4 @@ if __name__ == '__main__':
     mlflow.set_experiment('xg')
     shots = load_shots()
     for name in sys.argv[1:] or EXPERIMENTS:
-        run(name, EXPERIMENTS[name], shots)
+        run(name, *EXPERIMENTS[name], shots)
