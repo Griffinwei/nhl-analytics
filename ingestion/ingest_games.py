@@ -13,8 +13,10 @@ from common import current_season, ensure_schema, get_engine, get_teams
 # - time: time
 # - location: text
 # - home_team: text
+# - home_team_id: int
 # - home_score: smallint
 # - away_team: text
+# - away_team_id: int
 # - away_score: smallint
 # - overtime: boolean
 # - shootout: boolean
@@ -101,8 +103,10 @@ def ingest_games(season: int):
                             'time': time,
                             'location': location,
                             'home_team': home_team,
+                            'home_team_id': home_team_data.get("id"),
                             'home_score': home_score,
                             'away_team': away_team,
+                            'away_team_id': away_team_data.get("id"),
                             'away_score': away_score,
                             'overtime': overtime,
                             'shootout': shootout,
@@ -116,10 +120,10 @@ def ingest_games(season: int):
         # Insert all games with upsert logic
         if all_games:
             insert_sql = """
-            INSERT INTO games (game_id, season, date, time, location, home_team, home_score, 
-                             away_team, away_score, overtime, shootout, completed)
-            VALUES (:game_id, :season, :date, :time, :location, :home_team, :home_score,
-                   :away_team, :away_score, :overtime, :shootout, :completed)
+            INSERT INTO games (game_id, season, date, time, location, home_team, home_team_id, home_score, 
+                             away_team, away_team_id, away_score, overtime, shootout, completed)
+            VALUES (:game_id, :season, :date, :time, :location, :home_team, :home_team_id, :home_score,
+                   :away_team, :away_team_id, :away_score, :overtime, :shootout, :completed)
             ON CONFLICT (game_id) 
             DO UPDATE SET
                 date = EXCLUDED.date,
@@ -127,6 +131,8 @@ def ingest_games(season: int):
                 location = EXCLUDED.location,
                 home_team = EXCLUDED.home_team,
                 away_team = EXCLUDED.away_team,
+                home_team_id = EXCLUDED.home_team_id,
+                away_team_id = EXCLUDED.away_team_id,
                 home_score = EXCLUDED.home_score,
                 away_score = EXCLUDED.away_score,
                 overtime = EXCLUDED.overtime,

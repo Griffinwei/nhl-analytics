@@ -1,0 +1,8 @@
+# Model training deps, kept out of requirements.txt so ingestion workflows stay fast
+-r requirements.txt
+pandas==2.3.3
+pyarrow==25.0.1
+scikit-learn==1.9.1
+xgboost==3.4.1
+matplotlib==3.11.2
+mlflow==3.16.1
