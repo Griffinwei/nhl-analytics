@@ -13,11 +13,11 @@ Build an expected-goals (xG) model: for every unblocked shot attempt, predict th
 - **Exclude shootouts and penalty shots** (`period_type = 'SO'`; penalty shots have situation codes `0101`/`1010`).
 - Regular season only (already true of the data).
 
-## Status (2026-10-06)
+## Status (2026-10-08)
 
-- Prerequisites 1 and 2 are done; 4 is done except committing. Prerequisite 3 (handedness) is open.
-- A first prototype (`models/xg/`) was built, run, and then **deliberately reverted** so the spec could be revised first. Its results are recorded under [Prototype results](#prototype-results-2026-10-05-reverted-code). Rebuild from this spec.
-- MLflow 3.16.1 is installed locally; use a SQLite tracking store (`sqlite:///mlflow.db`). `mlruns/`, `mlflow.db`, `.cache/` are in `.gitignore`.
+- Prerequisites 1, 2 and 4 are done. Prerequisite 3 (handedness) is open, so experiment 3 (off-wing) hasn't been run.
+- Experiments 1, 2 and 4–7 are implemented on branch `xg-model` (`sql/xg_shots.sql`, `models/xg/`); see [Results](#results-2026-10-08).
+- MLflow 3.16.1, SQLite tracking store (`sqlite:///mlflow.db`). `mlruns/`, `mlflow.db`, `.cache/` are in `.gitignore`.
 
 ## What exists in the data today
 
@@ -237,29 +237,39 @@ Skip neural nets, SVMs, and random forests.
 6. + shift length (`def_mean_shift`, `off_mean_shift`)
 7. later experiments above
 
-## Prototype results (2026-10-05, reverted code)
+## Results (2026-10-08)
 
-Train 2024-25 / validate 2025-26 / test 2026-27 (39 games). Features: "base" = distance, log(distance), angle, empty net, skater counts, shot type, strength (linear terms, not splines).
+Train 2024-25, validate 2025-26, test 2026-27 (live: 4,267 shots as of 10-08). All shots, empty net included. Base-rate log loss: val 0.25907, test 0.26895.
 
-| Run | Val log loss (base rate 0.25907) | Val AUC | Test log loss (base rate 0.26439) | Test AUC | Val xG / goals |
-|---|---|---|---|---|---|
-| distance, log(distance), angle (logistic) | 0.24554 | 0.691 | 0.25198 | 0.682 | 1.026 |
-| base (logistic) | 0.23043 | 0.752 | 0.23855 | 0.738 | 1.050 |
-| base (XGBoost, depth 4, early-stopped) | 0.22616 | 0.761 | 0.23613 | 0.742 | 1.044 |
+| Experiment | Model | Val log loss | Val AUC | Test log loss | Test AUC | Val xG / goals |
+|---|---|---|---|---|---|---|
+| 1-location: spline(distance, angle) | logistic | 0.24158 | 0.702 | 0.25207 | 0.695 | 1.025 |
+| 2-game-state: + empty net (own distance slope), skaters, shot type, strength | logistic | 0.22812 | 0.756 | 0.23897 | 0.744 | 1.049 |
+| 4-xgboost: game-state features | XGBoost | 0.22653 | 0.760 | 0.23677 | 0.749 | 1.042 |
+| 5-time-between-shots: + `since_prev_attempt`, `rebound_dy` | logistic | 0.22617 | 0.763 | 0.23686 | 0.752 | 1.048 |
+| 6-shift-length: + `off_mean_shift`, `def_mean_shift` | logistic | 0.22535 | 0.767 | 0.23531 | 0.758 | 1.051 |
+| **7-xgboost-all: all features** | **XGBoost** | **0.22102** | **0.779** | **0.22975** | **0.774** | **1.039** |
 
-- Improvement over the base rate: 12.7% (XGBoost, val), 10.7% (test).
-- The logistic's top probability bin is over-predicted (about 0.32 predicted vs 0.245 observed).
-- 2025-26 over-predicted by 4–5% (scorer drift, see above).
+- **Best: experiment 7**, 14.6% better than the base rate on test, AUC 0.774. Calibration is close to the diagonal on both seasons; the top quantile bin is slightly over-predicted (about 0.34 predicted vs 0.31–0.32 observed), so no recalibration yet.
+- XGBoost's extra gain over the logistic is mostly time between shots (XGBoost gains 0.0046 val from it, the logistic 0.0020): trees learn that the time effect depends on distance (0–1 s crease whacks vs 1–3 s rebounds). Shift length adds about 0.0009 to either model.
+- Leak checks: gains hold on the out-of-time test season (not used for early stopping), and goal rate rises smoothly with defenders' shift length (2.2% at 0–5 s to 9.3% at 90 s+, 5v5).
+- Season drift persists: 2025-26 is over-predicted by 4–5%; 2026-27 by 1–2% so far.
+- Superseded: the 2026-10-05 prototype (linear features) reached val 0.23043 (logistic) / 0.22616 (XGBoost).
 
-## Suggested layout
+## Implementation notes
 ```
-models/xg/
-  features.py     # SQL pull + normalization + feature engineering -> DataFrame
-  train.py        # fit, log to MLflow, save model
-  evaluate.py     # metrics + calibration plot
-sql/xg_shots.sql  # base query for unblocked attempts (moves into dbt later)
+sql/xg_shots.sql    # one row per shot, all SQL-derivable features (moves into dbt later)
+models/xg/features.py  # cached pull + normalization + derived features
+models/xg/train.py     # experiments, fit, metrics, calibration plot, MLflow logging
 ```
-Run as modules from the repo root (`python -m models.xg.train`) so `from ingestion.common import get_engine` resolves. Predictions eventually land in an `xg_shots` table (planned as a dbt model): `game_id, event_id, xg, model_version`.
+- Run from the repo root: `python -m models.xg.train [experiment ...]`; view with `mlflow ui --backend-store-uri sqlite:///mlflow.db`.
+- The pull (about 55 s) is cached in `.cache/`, keyed on the SQL text. Delete `.cache/` to pick up newly played games.
+- Time-between-shots uses window functions: whistle-to-whistle segments via a running count of whistles, then `lag()` per (game, segment, shooting team), ordered by `sort_order`.
+- Shift features: shifts with `start < t <= end`, `type_code = 517`, goalies (`goalie_in_net_id`) excluded. Missing shift data (57 games in 2024-25) → training median in the logistic (`SimpleImputer`); XGBoost handles NaN natively.
+- Logistic: `tol=1e-7` (the default 1e-4 stopped early at a row-order-dependent point; overlapping quantile knots make the fit ill-conditioned). The query has `ORDER BY` for reproducibility.
+- Rare shot types: `OneHotEncoder(min_frequency=100, handle_unknown='infrequent_if_exist')` groups between-legs, cradle and unseen types.
+- Models are logged with `serialization_format='cloudpickle'`: MLflow's default skops format rejects scipy's BSpline objects.
+- No separate `evaluate.py`: metrics and the calibration plot are a few lines in `train.py`.
 
 ## Verification checklist
 - [x] `games.home_team_id` / `away_team_id` populated for all loaded seasons.
@@ -269,9 +279,9 @@ Run as modules from the repo root (`python -m models.xg.train`) so `from ingesti
 - [x] Shooter ID is non-null for every row.
 - [x] Off-wing sign verified with a known player (normalized `y > 0` = attacking team's left).
 - [x] On-ice players from `shifts` match the situation code (99.0% of 2025-26 shots).
-- [ ] Every event-sequence feature uses `sort_order`, and a leak check shows a flat goal rate across feature values where expected (e.g. whistles in shift).
-- [ ] Baseline logistic beats the base-rate log loss; XGBoost is compared on the same split.
-- [ ] Sum of xG ≈ goals on validation and test seasons.
+- [x] Every event-sequence feature uses `sort_order`; goal rate varies smoothly with the shift features (no leak cliff).
+- [x] Baseline logistic beats the base-rate log loss; XGBoost is compared on the same split.
+- [ ] Sum of xG ≈ goals on validation and test seasons (test 1.01–1.02 ✓; validation 1.04–1.05 because of scorer drift, open).
 
 ## Constraints
 - Schema changes additive, through `sql/schema.sql`.
