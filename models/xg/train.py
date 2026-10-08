@@ -30,11 +30,17 @@ GAME_STATE = {
     'numeric': ['empty_net', 'empty_net_distance', 'shooter_skaters', 'defender_skaters'],
     'categorical': ['shot_type', 'strength'],
 }
+TIME_BETWEEN_SHOTS = {
+    'spline': GAME_STATE['spline'] + ['since_prev_attempt'],
+    'numeric': GAME_STATE['numeric'] + ['rebound_dy'],
+    'categorical': GAME_STATE['categorical'],
+}
 
 EXPERIMENTS = {
     '1-location': ('logistic', LOCATION),
     '2-game-state': ('logistic', GAME_STATE),
     '4-xgboost': ('xgboost', GAME_STATE),
+    '5-time-between-shots': ('logistic', TIME_BETWEEN_SHOTS),
 }
 
 
