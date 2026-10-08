@@ -6,3 +6,9 @@ __pycache__/
 venv/
 *.egg-info/
 .ipynb_checkpoints/
+
+# Model training
+mlruns/
+mlflow.db
+models/**/artifacts/
+.cache/
