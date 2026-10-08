@@ -1,0 +1,6 @@
+# Install once per clone: pip install -r requirements-dev.txt && pre-commit install
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.24.2
+    hooks:
+      - id: gitleaks

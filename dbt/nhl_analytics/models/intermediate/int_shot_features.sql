@@ -10,9 +10,9 @@ WITH events AS (
         -- Whistle-to-whistle play segment: whistles strictly before this event (a goal ends its own segment)
         count(*) FILTER (WHERE p.event_type IN ('period-start', 'faceoff', 'stoppage', 'penalty', 'goal'))
             OVER (PARTITION BY p.game_id ORDER BY p.sort_order ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS segment
-    FROM play_by_play p
-    JOIN games g USING (game_id)
-    WHERE g.completed AND g.season = ANY(:seasons)
+    FROM {{ ref('stg_play_by_play') }} p
+    JOIN {{ ref('stg_games') }} g USING (game_id)
+    WHERE g.completed
 ),
 attempts AS (
     SELECT
@@ -46,9 +46,9 @@ shift_seconds AS (
         team_id,
         split_part(start_time, ':', 1)::int * 60 + split_part(start_time, ':', 2)::int AS start_seconds,
         split_part(end_time, ':', 1)::int * 60 + split_part(end_time, ':', 2)::int AS end_seconds
-    FROM shifts
+    FROM {{ ref('stg_shifts') }}
     WHERE type_code = 517  -- 505 rows are goal markers, not shifts
-      AND player_id NOT IN (SELECT goalie_in_net_id FROM play_by_play WHERE goalie_in_net_id IS NOT NULL)
+      AND player_id NOT IN (SELECT goalie_in_net_id FROM {{ ref('stg_play_by_play') }} WHERE goalie_in_net_id IS NOT NULL)
 ),
 on_ice AS (
     -- Skaters on the ice at the shot: on after their shift started, up to and including its last second
@@ -82,4 +82,3 @@ SELECT
     def_mean_shift
 FROM shots
 LEFT JOIN on_ice USING (game_id, event_id)  -- null for the games with no shift data
-ORDER BY game_id, sort_order  -- stable row order, so reruns give identical fits

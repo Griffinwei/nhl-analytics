@@ -8,7 +8,11 @@ import sqlalchemy as sa
 from ingestion.common import get_engine
 
 ROOT = Path(__file__).resolve().parents[2]
-SQL = (ROOT / 'sql' / 'xg_shots.sql').read_text()
+SQL = """
+SELECT * FROM transformations.int_shot_features
+WHERE season = ANY(:seasons)
+ORDER BY game_id, event_id
+"""
 # Keyed on the query text so editing the SQL re-pulls; delete .cache/ to pick up newly played games
 CACHE = ROOT / '.cache' / f"xg_shots_{hashlib.md5(SQL.encode()).hexdigest()[:8]}.parquet"
 SEASONS = [20242025, 20252026, 20262027]
@@ -19,7 +23,8 @@ def load_shots() -> pd.DataFrame:
         CACHE.parent.mkdir(exist_ok=True)
         with get_engine().connect() as conn:
             pd.read_sql(sa.text(SQL), conn, params={'seasons': SEASONS}).to_parquet(CACHE)
-    return add_features(pd.read_parquet(CACHE))
+    # Sort on the primary key: tables have no inherent row order, and XGBoost fits shift slightly with it
+    return add_features(pd.read_parquet(CACHE).sort_values(['game_id', 'event_id'], ignore_index=True))
 
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:

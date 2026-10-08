@@ -1,0 +1,22 @@
+version: 2
+sources:
+  - name: raw
+    schema: public
+    freshness:
+      warn_after: {count: 36, period: hour}
+    loaded_at_field: updated_at
+    tables:
+      - name: games
+      - name: play_by_play
+      - name: shifts
+      - name: players
+      - name: betting_lines
+        loaded_at_field: captured_at
+      - name: xg_predictions
+        description: Per-shot xG written by models/xg/score.py. dbt reads it, never writes it.
+        loaded_at_field: scored_at
+        columns:
+          - name: xg
+            data_tests: [not_null]
+          - name: model_version
+            data_tests: [not_null]

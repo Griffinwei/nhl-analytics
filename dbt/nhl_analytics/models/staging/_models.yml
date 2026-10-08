@@ -1,0 +1,33 @@
+version: 2
+models:
+  - name: stg_games
+    columns:
+      - name: game_id
+        data_tests: [unique, not_null]
+      - name: home_team_id
+        data_tests: [not_null]
+      - name: away_team_id
+        data_tests: [not_null]
+  - name: stg_players
+    columns:
+      - name: player_id
+        data_tests: [unique, not_null]
+  - name: stg_shifts
+    columns:
+      - name: shift_id
+        data_tests: [unique, not_null]
+  - name: stg_betting_lines
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [game_id, sportsbook, captured_at]
+    columns:
+      - name: game_id
+        data_tests:
+          - relationships:
+              arguments: {to: ref('stg_games'), field: game_id}
+  - name: stg_play_by_play
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [game_id, event_id]
