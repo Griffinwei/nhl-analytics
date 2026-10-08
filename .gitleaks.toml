@@ -1,0 +1,14 @@
+[extend]
+useDefault = true
+
+# Connection strings with an inline password, e.g. postgresql://user:pass@host/db
+[[rules]]
+id = "db-url-with-password"
+description = "Database URL with embedded credentials"
+regex = '''(?i)\b(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis)://[^:@/\s"']+:[^@/\s"']+@'''
+
+# Neon password tokens, even outside a URL
+[[rules]]
+id = "neon-password"
+description = "Neon database password"
+regex = '''\bnpg_[A-Za-z0-9]{12,}\b'''

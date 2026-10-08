@@ -12,3 +12,11 @@ mlruns/
 mlflow.db
 models/**/artifacts/
 .cache/
+
+# dbt artifacts (any depth; dbt writes logs/ to whatever dir it's run from)
+logs/
+*.log
+target/
+dbt_packages/
+profiles.yml
+.user.yml
