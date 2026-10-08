@@ -12,7 +12,7 @@ WITH events AS (
             OVER (PARTITION BY p.game_id ORDER BY p.sort_order ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS segment
     FROM {{ ref('stg_play_by_play') }} p
     JOIN {{ ref('stg_games') }} g USING (game_id)
-    WHERE g.completed AND g.season = ANY(:seasons)
+    WHERE g.completed
 ),
 attempts AS (
     SELECT
