@@ -12,3 +12,11 @@ sources:
       - name: players
       - name: betting_lines
         loaded_at_field: captured_at
+      - name: xg_predictions
+        description: Per-shot xG written by models/xg/score.py. dbt reads it, never writes it.
+        loaded_at_field: scored_at
+        columns:
+          - name: xg
+            data_tests: [not_null]
+          - name: model_version
+            data_tests: [not_null]

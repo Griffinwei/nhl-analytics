@@ -115,6 +115,14 @@ CREATE TABLE IF NOT EXISTS betting_lines (
     PRIMARY KEY (game_id, sportsbook, captured_at)
 );
 
+-- Creates a table to store xG predictions per shot per game
+CREATE TABLE IF NOT EXISTS xg_predictions (
+       game_id INTEGER NOT NULL, event_id INTEGER NOT NULL,
+       xg DOUBLE PRECISION NOT NULL, model_version TEXT NOT NULL,
+       scored_at TIMESTAMPTZ DEFAULT now(),
+       PRIMARY KEY (game_id, event_id, model_version)
+   );
+
 -- Indexes for performance
 CREATE INDEX IF NOT EXISTS idx_players_team ON players(team);
 CREATE INDEX IF NOT EXISTS idx_players_position ON players(position);
