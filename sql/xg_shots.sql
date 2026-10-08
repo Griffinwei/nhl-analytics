@@ -82,3 +82,4 @@ SELECT
     def_mean_shift
 FROM shots
 LEFT JOIN on_ice USING (game_id, event_id)  -- null for the games with no shift data
+ORDER BY game_id, sort_order  -- stable row order, so reruns give identical fits
