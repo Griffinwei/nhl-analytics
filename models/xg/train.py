@@ -16,7 +16,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import SplineTransformer
+from sklearn.preprocessing import OneHotEncoder, SplineTransformer, StandardScaler
 
 from models.xg.features import load_shots
 
@@ -25,12 +25,23 @@ COLORS = {'val': '#2a78d6', 'test': '#eb6834'}
 
 EXPERIMENTS = {
     '1-location': {'spline': ['distance', 'angle']},
+    '2-game-state': {
+        'spline': ['distance', 'angle'],
+        'numeric': ['empty_net', 'empty_net_distance', 'shooter_skaters', 'defender_skaters'],
+        'categorical': ['shot_type', 'strength'],
+    },
 }
 
 
 def build_model(features: dict):
+    transformers = {
+        'spline': SplineTransformer(n_knots=8, knots='quantile', extrapolation='constant'),
+        'numeric': StandardScaler(),
+        # Shot types seen fewer than 100 times in training (between-legs, cradle, new ones) share one column
+        'categorical': OneHotEncoder(handle_unknown='infrequent_if_exist', min_frequency=100),
+    }
     return make_pipeline(
-        ColumnTransformer([('spline', SplineTransformer(n_knots=8, knots='quantile', extrapolation='constant'), features['spline'])]),
+        ColumnTransformer([(group, transformers[group], cols) for group, cols in features.items()]),
         LogisticRegression(max_iter=1000),
     )
 

@@ -27,4 +27,12 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
     x, y = df.x_coord * sign, df.y_coord * sign
     df['distance'] = np.hypot(89 - x, y)
     df['angle'] = np.degrees(np.arctan2(np.abs(y), 89 - x))
+
+    # situation_code digits: [away goalie][away skaters][home skaters][home goalie]
+    away_goalie, away_skaters, home_skaters, home_goalie = (df.situation_code.str[i].astype(int) for i in range(4))
+    df['shooter_skaters'] = np.where(df.is_home, home_skaters, away_skaters)
+    df['defender_skaters'] = np.where(df.is_home, away_skaters, home_skaters)
+    df['empty_net'] = (np.where(df.is_home, away_goalie, home_goalie) == 0).astype(int)
+    # Empty-net goal odds fall off with distance far more slowly, so give them their own slope
+    df['empty_net_distance'] = df.empty_net * df.distance
     return df
