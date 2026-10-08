@@ -8,7 +8,11 @@ import sqlalchemy as sa
 from ingestion.common import get_engine
 
 ROOT = Path(__file__).resolve().parents[2]
-SQL = (ROOT / 'sql' / 'xg_shots.sql').read_text()
+SQL = """
+SELECT * FROM transformations.int_shot_features
+WHERE season = ANY(:seasons)
+ORDER BY game_id, event_id
+"""
 # Keyed on the query text so editing the SQL re-pulls; delete .cache/ to pick up newly played games
 CACHE = ROOT / '.cache' / f"xg_shots_{hashlib.md5(SQL.encode()).hexdigest()[:8]}.parquet"
 SEASONS = [20242025, 20252026, 20262027]
