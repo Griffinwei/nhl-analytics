@@ -39,7 +39,10 @@ jobs:
 
       # score pins the libraries the champion was pickled with; no MLflow needed to load it
       - name: Install dependencies
-        run: pip install --group score --group dbt
+        # --group needs pip >= 25.1
+        run: |
+          python -m pip install --upgrade pip
+          pip install --group score --group dbt
 
       - name: Ingest games
         run: python ingestion/ingest_games.py
