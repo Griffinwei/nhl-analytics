@@ -19,4 +19,6 @@ logs/
 target/
 dbt_packages/
 profiles.yml
+# Prod profile: env_var() only, no secrets
+!dbt/profiles/profiles.yml
 .user.yml

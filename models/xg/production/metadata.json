@@ -1,0 +1,20 @@
+{
+  "name": "xg",
+  "version": "1",
+  "features": [
+    "distance",
+    "angle",
+    "since_prev_attempt",
+    "off_mean_shift",
+    "def_mean_shift",
+    "empty_net",
+    "empty_net_distance",
+    "shooter_skaters",
+    "defender_skaters",
+    "rebound_dy",
+    "shot_type",
+    "strength"
+  ],
+  "scikit-learn": "1.9.1",
+  "xgboost": "3.4.1"
+}

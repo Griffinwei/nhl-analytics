@@ -1,0 +1,17 @@
+# Prod profile for GitHub Actions. Values come only from environment variables (Actions secrets),
+# so this file holds no credentials. It lives outside dbt/nhl_analytics/ so it doesn't shadow your
+# local ~/.dbt/profiles.yml (dev target); point dbt at it with DBT_PROFILES_DIR or --profiles-dir.
+nhl_analytics:
+  target: prod
+  outputs:
+    prod:
+      type: postgres
+      host: "{{ env_var('DBT_HOST') }}"
+      user: "{{ env_var('DBT_USER') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      dbname: "{{ env_var('DBT_DBNAME') }}"
+      port: 5432
+      # Kept apart from dev's transformations schema. models/xg/score.py reads features from the same variable
+      schema: "{{ env_var('DBT_SCHEMA', 'analytics') }}"
+      threads: 4
+      sslmode: require
