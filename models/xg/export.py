@@ -17,7 +17,7 @@ if __name__ == '__main__':
     model, version = load_from_registry()
     PRODUCTION.mkdir(exist_ok=True)
     # Plain pickle, so loading needs only the libraries the pipeline is built from, not MLflow.
-    # Pickles are tied to library versions: CI installs the same pins from requirements-ml.txt
+    # Pickles are tied to library versions: CI installs the same pins from pyproject.toml's score group
     with open(PRODUCTION / 'model.pkl', 'wb') as f:
         pickle.dump(model, f)
     (PRODUCTION / 'metadata.json').write_text(json.dumps({

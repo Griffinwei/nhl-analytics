@@ -1,0 +1,35 @@
+# Dependencies only; this repo isn't an installable package. Install a group from the repo root (pip >= 25.1):
+#   pip install --group dev                  # local: everything
+#   pip install --group ingest               # API ingestion workflows
+#   pip install --group score --group dbt    # nightly pipeline
+[dependency-groups]
+ingest = [
+    "requests==2.33.0",
+    "psycopg2-binary==2.9.11",
+    "sqlalchemy==2.0.45",
+    "python-dotenv==1.2.2",
+]
+dbt = [
+    "dbt-postgres==1.11.0",
+]
+# Loads and runs the exported champion. The pickle is tied to these versions: keep them
+# equal to what models.xg.export ran with, and re-export after bumping any of them
+score = [
+    { include-group = "ingest" },
+    "numpy==2.4.1",
+    "pandas==2.3.3",
+    "scikit-learn==1.9.1",
+    "xgboost==3.4.1",
+]
+train = [
+    { include-group = "score" },
+    "pyarrow==25.0.1",
+    "matplotlib==3.11.2",
+    "mlflow==3.16.1",
+]
+dev = [
+    { include-group = "train" },
+    { include-group = "dbt" },
+    "jupyter==1.1.1",
+    "pre-commit==4.3.0",
+]
