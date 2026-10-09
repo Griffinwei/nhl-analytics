@@ -24,6 +24,9 @@ jobs:
       DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
       DBT_DBNAME: ${{ secrets.DBT_DBNAME }}
       DBT_SCHEMA: analytics
+      # Only run tests whose parents are all being built (or already upstream of the selection). The default
+      # also picks up tests on unselected models, e.g. stg_betting_lines -> stg_games when building +int_shot_features
+      DBT_INDIRECT_SELECTION: buildable
 
     steps:
       - uses: actions/checkout@v4
