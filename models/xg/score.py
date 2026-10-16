@@ -71,6 +71,9 @@ def load_champion():
 def score(engine: sa.Engine, model, version: str) -> pd.DataFrame:
     with engine.connect() as conn:
         shots = pd.read_sql(sa.text(UNSCORED_SQL), conn, params={'version': version})
+    # Nothing new when no games finished since the last run; predict_proba raises on 0 rows
+    if shots.empty:
+        return pd.DataFrame(columns=['game_id', 'event_id', 'model_version', 'xg'])
     shots = add_features(shots)
     xg = model.predict_proba(shots[model.feature_names_in_])[:, 1]
     return shots[['game_id', 'event_id']].assign(model_version=version, xg=xg.astype(float))
@@ -81,8 +84,13 @@ if __name__ == '__main__':
     ensure_schema(engine)
     model, version = load_champion()
     predictions = score(engine, model, version)
-    if len(predictions):
+    if predictions.empty:
+        message = (f"No unscored shots in {FEATURES_SCHEMA}.int_shot_features for {MODEL_NAME} v{version}: "
+                   "no games finished since the last run, so there is nothing to score")
+        # In GitHub Actions, also show it as a notice on the run summary
+        print(f"::notice title=xG scoring skipped::{message}" if os.getenv('GITHUB_ACTIONS') else message)
+    else:
         with engine.begin() as conn:
             conn.execute(sa.text(UPSERT_SQL), predictions.to_dict('records'))
-    source = REGISTRY if REGISTRY.exists() else PRODUCTION
-    print(f"Scored {len(predictions):,} shots from {FEATURES_SCHEMA}.int_shot_features with {MODEL_NAME} v{version} ({source})")
+        source = REGISTRY if REGISTRY.exists() else PRODUCTION
+        print(f"Scored {len(predictions):,} shots from {FEATURES_SCHEMA}.int_shot_features with {MODEL_NAME} v{version} ({source})")
