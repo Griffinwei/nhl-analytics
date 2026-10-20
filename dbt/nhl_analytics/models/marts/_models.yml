@@ -43,3 +43,13 @@ models:
       - name: ga_goalie
         data_tests:
           - not_null: {config: {severity: warn}}
+  - name: fct_goalie_games
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [game_id, goalie_id]
+    columns:
+      - name: goalie_id
+        data_tests: [not_null]
+      - name: is_starter
+        data_tests: [not_null]

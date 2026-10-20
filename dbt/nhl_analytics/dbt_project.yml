@@ -44,3 +44,7 @@ vars:
   shrink_k_5v5: 15
   shrink_k_st: 45
   shrink_k_gsax: 150
+  # Goalie GSAx per shot in int_goalie_game_rolling: k in shots (empirical Bayes, 2024-26: 1,900-2,600), and the
+  # level a goalie with no history is shrunk toward, in GSAx per 100 shots relative to the league
+  shrink_k_goalie_shots: 2000
+  goalie_prior_gsax_per_100: 0

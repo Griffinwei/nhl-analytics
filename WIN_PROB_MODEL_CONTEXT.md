@@ -26,7 +26,7 @@ Rest is two flags rather than Δrest days: nearly all of the effect is the back-
 1. ✅ Unit, target and splits (below)
 2. ✅ Per-game stats on `fct_team_games`
 3. ✅ Pre-game rolling values with shrinkage toward the league average (`int_team_game_rolling`)
-4. Goalie: team-level GSAx first; the starter's own GSAx (needs `goalie_in_net_id` in `int_shot_features`) as an experiment
+4. ✅ Goalie: team-level GSAx vs. the starter's own GSAx (`fct_goalie_games`, `int_goalie_game_rolling`). Neither helps yet; see below
 5. `fct_game_features`: one row per game (completed and scheduled), deltas, target, market `home_fair_prob`
 6. Fit (statsmodels for coefficients/SEs, sklearn for the artifact), MLflow experiment `win-prob`
 7. Evaluate on log loss vs. constant home rate, calibration, game bootstrap; vs. the market on 2026-27
@@ -104,3 +104,31 @@ Next-game MSE, shrunk vs. raw season-to-date mean (2024-26, teams with ≥ 1 pri
 | 1–9 | 576 | 0.406 vs 0.488 | 0.470 vs 0.603 | 2.70 vs 3.73 |
 | 10–29 | 1,280 | 0.373 vs 0.383 | 0.365 vs 0.380 | 2.71 vs 2.87 |
 | 30+ | 3,328 | 0.399 vs 0.401 | 0.381 vs 0.385 | 2.57 vs 2.59 |
+
+## Step 4: goalie definition
+
+New models:
+- **`fct_shots_xg`** gains `goalie_id` (from `goalie_in_net_id`; null exactly when the defending net is empty, verified on every shot) and `sort_order`. `int_shot_features`, the xG model's input, is unchanged.
+- **`fct_goalie_games`** (mart): one row per goalie per team-game with shots faced, xGA, GA and GSAx, goalie in net. `is_starter` = the goalie in net for the team's first shot against. About 5% of team-games use two goalies. Test `goalie_games_match_team_games`: exactly one starter per team-game, and goalie totals equal `fct_team_games.xga_goalie`/`ga_goalie`.
+- **`int_goalie_game_rolling`**: per goalie-game, prior shots and GSAx over **every loaded season** (career-to-date), shrunk per shot with `k = shrink_k_goalie_shots` (2,000) toward `goalie_prior_gsax_per_100` (0). Each game's GSAx is measured against the league's per-shot GSAx to date, blended with last season's (20,000 pseudo-shots), so xG drift between seasons (+0.17 to +0.23 per 100 shots after 2024-25) doesn't leak into goalie histories. Leakage test `goalie_game_rolling_uses_only_prior_games`.
+- **`int_team_game_rolling`** gains `starter_goalie_id`, `starter_shots_prior`, `starter_gsax_per_shot_shrunk`. Null for scheduled games: starters aren't known in advance, and there's no starter source yet.
+
+Replacement level: within a season, low-volume goalies post worse GSAx (−0.4 to −1.3 per 100 shots under 300 shots), but that's selection: goalies who play badly lose starts. Looking forward instead (2025-26 onward, by shots of history before the game), goalies with no history post +0.5 ± 1.0 per 100 and those with 1–499 shots +0.2 ± 0.3. So the prior stays at league average (offset 0).
+
+**Experiment** (scratch, statsmodels Logit with Δxgf, Δxga, Δst, b2b flags plus the goalie variant; 2,000× game bootstrap of the paired log-loss difference vs. no goalie term):
+
+| Train → validate | No goalie | + team GSAx | + starter GSAx | + both | Constant rate |
+|---|---|---|---|---|---|
+| 2024-25 → 2025-26 | 0.68072 | +0.00018 [−0.0014, +0.0017] | +0.00107 [−0.0013, +0.0035] | +0.00080 | 0.69554 |
+| 2025-26 → 2024-25 | 0.67179 | +0.00076 [−0.0001, +0.0015] | +0.00021 [−0.0001, +0.0005] | +0.00078 | 0.68856 |
+
+Neither goalie term improves validation in either direction. Coefficients are positive training on 2024-25 (team +0.70 ± 0.72, starter +0.19 ± 0.17 per 100 shots) and ~0 or negative training on 2025-26.
+
+Why: **goalie GSAx from this xG model barely repeats.** Year-over-year correlation of goalie GSAx per shot is 0.04 (0.09 shot-weighted) for 53 goalies with 800+ shots in both seasons. Within-season odd/even split-half correlation is 0.20 (2024-25) and 0.05 (2025-26). That implies `k` around 5,000+ shots, more than the variance-decomposition estimate. The xG model has no pre-shot movement or screen data, so GSAx mostly carries shot quality the model misses, not goalie skill.
+
+Decision: `fct_game_features` carries Δ team GSAx (and Δ starter GSAx for analysis); step 7's ablation decides whether b4 stays. Expect to drop it. The starter version can't be used live without a confirmed-starter source anyway.
+
+Other findings from the same fits, for steps 6–7:
+- **Home ice disappeared in 2025-26:** b0 = +0.21 ± 0.07 training on 2024-25, −0.00 ± 0.07 on 2025-26.
+- **Stable across seasons:** Δxgf (+1.46 / +1.49), Δxga (−1.12 / −1.46), away back-to-back (+0.44 / +0.42).
+- **Unstable:** Δst (+0.71 ± 0.77 / −0.77 ± 0.71) and home back-to-back (−0.38 ± 0.20 / +0.08 ± 0.18).

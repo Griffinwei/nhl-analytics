@@ -61,6 +61,11 @@ select
     {%- for s, k in stats %},
     p.{{ s }}_prior_sum,
     l.{{ s }} as {{ s }}_league_avg,
-    (coalesce(p.{{ s }}_prior_sum, 0) + {{ k }} * l.{{ s }}) / (p.games_prior + {{ k }}) as {{ s }}_shrunk{% endfor %}
+    (coalesce(p.{{ s }}_prior_sum, 0) + {{ k }} * l.{{ s }}) / (p.games_prior + {{ k }}) as {{ s }}_shrunk{% endfor %},
+    -- Actual starter's GSAx per shot before this game. Null for scheduled games: starters aren't known in advance.
+    g.goalie_id as starter_goalie_id,
+    g.shots_prior as starter_shots_prior,
+    g.gsax_per_shot_shrunk as starter_gsax_per_shot_shrunk
 from prior p
 join league l using (season, date)
+left join {{ ref('int_goalie_game_rolling') }} g on g.game_id = p.game_id and g.team_id = p.team_id and g.is_starter
