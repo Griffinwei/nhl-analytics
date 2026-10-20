@@ -1,4 +1,4 @@
-# Install once per clone: pip install -r requirements-dev.txt && pre-commit install
+# Install once per clone: pip install --group dev && pre-commit install
 repos:
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.24.2

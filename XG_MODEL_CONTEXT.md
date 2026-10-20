@@ -55,7 +55,7 @@ Data facts and gaps:
    - Fill from `GET /v1/roster/{team}/{season}` (`shootsCatches`; `roster/BOS/20242025` appeared to return only 19 players, so check coverage). Fallback per player: `GET /v1/player/{id}/landing` (untested).
    - `rosterSpots` in the play-by-play response lists every player who dressed (no handedness), which shows exactly which IDs are needed.
    - Don't let this upsert overwrite a current player's `team`; insert missing players only, or use a separate small table.
-4. **Dependencies.** ✅ `requirements-ml.txt` (pandas, pyarrow, scikit-learn, xgboost, matplotlib, mlflow; pinned). Not yet committed.
+4. **Dependencies.** ✅ `pyproject.toml` dependency groups: `score` (numpy, pandas, scikit-learn, xgboost) and `train` (adds pyarrow, matplotlib, mlflow); pinned.
 
 ## Coordinates and goal location (verified 2026-10-05/06)
 

@@ -35,11 +35,14 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: requirements*.txt
+          cache-dependency-path: pyproject.toml
 
-      # ML deps (they include requirements.txt) to load the pickled champion; same pins it was exported with
+      # score pins the libraries the champion was pickled with; no MLflow needed to load it
       - name: Install dependencies
-        run: pip install -r requirements-ml.txt
+        # --group needs pip >= 25.1
+        run: |
+          python -m pip install --upgrade pip
+          pip install --group score --group dbt
 
       - name: Ingest games
         run: python ingestion/ingest_games.py

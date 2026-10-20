@@ -15,10 +15,8 @@ import os
 import pickle
 from pathlib import Path
 
-import mlflow
 import pandas as pd
 import sqlalchemy as sa
-from mlflow import MlflowClient
 
 from ingestion.common import ensure_schema, get_engine
 from models.xg.features import add_features
@@ -48,6 +46,10 @@ ON CONFLICT (game_id, event_id, model_version) DO UPDATE SET
 
 
 def load_from_registry():
+    # Imported here so scoring from production/ (GitHub Actions) doesn't need MLflow installed
+    import mlflow
+    from mlflow import MlflowClient
+
     mlflow.set_tracking_uri(f'sqlite:///{REGISTRY}')
     # Registry version number, stored as text in xg_predictions.model_version
     version = str(MlflowClient().get_model_version_by_alias(MODEL_NAME, 'champion').version)
