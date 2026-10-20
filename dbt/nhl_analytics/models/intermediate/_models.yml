@@ -5,3 +5,26 @@ models:
       - dbt_utils.unique_combination_of_columns:
           arguments:
             combination_of_columns: [game_id, event_id]
+  - name: int_team_game_rolling
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [game_id, team_id]
+    columns:
+      - name: games_prior
+        data_tests: [not_null]
+      # Null only on the first night of the earliest season loaded, which has no league history
+      - name: xgf_5v5_shrunk
+        data_tests:
+          - not_null: {config: {where: "season > 20242025"}}
+      - name: gsax_shrunk
+        data_tests:
+          - not_null: {config: {where: "season > 20242025"}}
+  - name: int_goalie_game_rolling
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [game_id, goalie_id]
+    columns:
+      - name: gsax_per_shot_shrunk
+        data_tests: [not_null]
