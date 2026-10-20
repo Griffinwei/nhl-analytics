@@ -25,7 +25,7 @@ Rest is two flags rather than Δrest days: nearly all of the effect is the back-
 
 1. ✅ Unit, target and splits (below)
 2. ✅ Per-game stats on `fct_team_games`
-3. Pre-game rolling values with shrinkage toward the league average (`int_team_game_rolling`)
+3. ✅ Pre-game rolling values with shrinkage toward the league average (`int_team_game_rolling`)
 4. Goalie: team-level GSAx first; the starter's own GSAx (needs `goalie_in_net_id` in `int_shot_features`) as an experiment
 5. `fct_game_features`: one row per game (completed and scheduled), deltas, target, market `home_fair_prob`
 6. Fit (statsmodels for coefficients/SEs, sklearn for the artifact), MLflow experiment `win-prob`
@@ -76,3 +76,31 @@ Values (per team per game):
 
 - GSAx is ~0 in 2024-25 because the xG model was trained on it. The +0.11 in 2025-26 is the model's ~4% over-prediction from scorer drift. Δgsax cancels league-wide shifts, but per-season levels shouldn't be compared directly.
 - Team-season spread in GSAx is about twice that of special-teams net, so goaltending should matter, if the rolling estimate is stable enough (use a large shrinkage `k`).
+
+## Step 3: pre-game rolling values (`int_team_game_rolling`)
+
+One row per team per game, **completed and scheduled**, so tonight's slate gets features from the same model. Columns per stat (`xgf_5v5`, `xga_5v5`, `st_net`, `gsax`): `<stat>_prior_sum`, `<stat>_league_avg`, `<stat>_shrunk`, plus `games_prior`, `rest_days` and `is_b2b`.
+
+- **Season-to-date, earlier games only.** Window `rows between unbounded preceding and 1 preceding` per team-season; a team never plays twice on a date. Test `team_game_rolling_uses_only_prior_games` recomputes every sum with a `date <` join.
+- **Shrinkage:** `shrunk = (prior_sum + k · league_avg) / (games_prior + k)`. Sums and counts are stored, so training can re-tune `k` in Python without a dbt rebuild.
+- **Anchor:** league average over earlier dates this season (same night excluded), else last season's average on opening night. Null only on 2024-25 opening night (1 game). With equal `games_prior` the anchor cancels exactly in a home-minus-away delta.
+- **Rest** is computed over completed and scheduled games, so a scheduled game's `rest_days` is from the team's previous game. `is_b2b = rest_days = 1`; a season opener is not a back-to-back. About 15% of team-games are back-to-backs.
+
+`k` defaults (vars in `dbt_project.yml`) are the empirical-Bayes ratio of within-team game variance to true between-team variance, 2024-25 / 2025-26:
+
+| Stat | Within-team var | True between-team var | k | Default |
+|---|---|---|---|---|
+| 5v5 xGF | 0.37 / 0.40 | 0.024 / 0.026 | 15 / 15 | 15 |
+| 5v5 xGA | 0.37 / 0.40 | 0.024 / 0.021 | 15 / 19 | 15 |
+| ST net | 0.32 / 0.44 | 0.008 / 0.009 | 41 / 52 | 45 |
+| GSAx | 2.60 / 2.63 | 0.023 / 0.014 | 114 / 183 | 150 |
+
+GSAx is mostly noise within a season: at 41 games played its observed value gets about 21% weight.
+
+Next-game MSE, shrunk vs. raw season-to-date mean (2024-26, teams with ≥ 1 prior game):
+
+| Prior games | n | 5v5 xGF | ST net | GSAx |
+|---|---|---|---|---|
+| 1–9 | 576 | 0.406 vs 0.488 | 0.470 vs 0.603 | 2.70 vs 3.73 |
+| 10–29 | 1,280 | 0.373 vs 0.383 | 0.365 vs 0.380 | 2.71 vs 2.87 |
+| 30+ | 3,328 | 0.399 vs 0.401 | 0.381 vs 0.385 | 2.57 vs 2.59 |

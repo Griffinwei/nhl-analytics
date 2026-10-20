@@ -39,3 +39,8 @@ models:
 vars:
   # MLflow registry version of model 'xg' whose predictions the marts read (see models/xg/score.py)
   xg_model_version: '1'
+  # Win model: pseudo-games of league average added to each team's season-to-date stats in int_team_game_rolling.
+  # Defaults are the empirical-Bayes k (within-team game variance / true between-team variance) from 2024-26
+  shrink_k_5v5: 15
+  shrink_k_st: 45
+  shrink_k_gsax: 150
