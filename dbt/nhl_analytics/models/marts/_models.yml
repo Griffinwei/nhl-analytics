@@ -24,3 +24,22 @@ models:
               arguments: {to: ref('stg_games'), field: game_id}
       - name: team_id
         data_tests: [not_null]
+      - name: won
+        data_tests: [not_null]
+      - name: decided_in
+        data_tests:
+          - accepted_values:
+              arguments: {values: ['REG', 'OT', 'SO']}
+      # Warn only: null means the game has no xG yet, which shouldn't stop the dashboards' marts
+      - name: pp_xgf
+        data_tests:
+          - not_null: {config: {severity: warn}}
+      - name: pk_xga
+        data_tests:
+          - not_null: {config: {severity: warn}}
+      - name: xga_goalie
+        data_tests:
+          - not_null: {config: {severity: warn}}
+      - name: ga_goalie
+        data_tests:
+          - not_null: {config: {severity: warn}}
